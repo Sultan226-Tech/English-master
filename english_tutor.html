@@ -1,0 +1,1939 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>English Master 🇬🇧</title>
+
+<!-- ═══ PWA — Manifest ═══ -->
+<link rel="manifest" href="manifest.json">
+
+<!-- ═══ PWA — iOS Safari ═══ -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="English Master">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="apple-touch-icon" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" sizes="512x512" href="icon-512.png">
+
+<!-- ═══ PWA — Android / Chrome ═══ -->
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#4f6ef7">
+<meta name="msapplication-TileColor" content="#4f6ef7">
+<meta name="msapplication-TileImage" content="icon-192.png">
+
+<!-- ═══ SEO & Partage ═══ -->
+<meta name="description" content="Apprends l'anglais de A1 à C1 — Vocabulaire, Grammaire, Quiz, Dictée et plus encore.">
+<meta name="author" content="English Master">
+<meta property="og:title" content="English Master 🇬🇧">
+<meta property="og:description" content="Apprends l'anglais de A1 à C1 — Vocabulaire, Grammaire, Quiz, Dictée">
+<meta property="og:image" content="icon-512.png">
+<meta property="og:type" content="website">
+
+<!-- ═══ Icône standard ═══ -->
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
+
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Literata:ital,wght@0,300;0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f5f7fa;
+  --surface: #ffffff;
+  --surface2: #f0f2f7;
+  --border: #e2e6ef;
+  --border2: #d0d6e4;
+  --accent: #4f6ef7;
+  --accent2: #3b57e0;
+  --teal: #0ea5a0;
+  --teal-light: #e6f7f7;
+  --coral: #ef4444;
+  --coral-light: #fef2f2;
+  --lavender: #7c5cdb;
+  --lavender-light: #f3f0ff;
+  --green: #16a34a;
+  --green-light: #f0fdf4;
+  --gold: #d97706;
+  --gold-light: #fffbeb;
+  --blue: #2563eb;
+  --text: #1a1d2e;
+  --text2: #374151;
+  --muted: #6b7280;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.07), 0 1px 2px rgba(0,0,0,.05);
+  --shadow-md: 0 4px 12px rgba(0,0,0,.08), 0 2px 6px rgba(0,0,0,.05);
+  --shadow-lg: 0 10px 28px rgba(0,0,0,.10), 0 4px 10px rgba(0,0,0,.06);
+  --radius: 14px;
+  --radius-sm: 8px;
+  --radius-pill: 99px;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);font-family:'Literata',Georgia,serif;color:var(--text);min-height:100vh;overflow-x:hidden;}
+
+/* HEADER */
+header{background:linear-gradient(135deg,#ffffff 0%,#eef1ff 50%,#f0faff 100%);padding:2rem 1.5rem 1.5rem;text-align:center;position:relative;overflow:hidden;border-bottom:1px solid var(--border);}
+header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 25% 60%,rgba(79,110,247,.06) 0%,transparent 55%),radial-gradient(ellipse at 75% 30%,rgba(14,165,160,.05) 0%,transparent 55%);pointer-events:none;}
+header h1{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,6vw,3rem);font-weight:800;letter-spacing:-1.5px;color:var(--text);position:relative;}
+header h1 span{color:var(--accent);background:linear-gradient(135deg,var(--accent),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+header p{color:var(--muted);font-size:.9rem;margin-top:.4rem;font-style:italic;}
+.level-badge{display:inline-flex;gap:.5rem;margin-top:.8rem;flex-wrap:wrap;justify-content:center;}
+.badge{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-pill);padding:.25rem .8rem;font-size:.72rem;font-family:'Syne',sans-serif;font-weight:700;letter-spacing:.3px;box-shadow:var(--shadow-sm);}
+.badge.a1{color:var(--green);border-color:rgba(22,163,74,.25);background:var(--green-light);}
+.badge.b1{color:var(--gold);border-color:rgba(217,119,6,.25);background:var(--gold-light);}
+.badge.c1{color:var(--coral);border-color:rgba(239,68,68,.25);background:var(--coral-light);}
+
+/* PROGRESS BAR */
+.progress-wrap{background:var(--surface);padding:.65rem 1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:.8rem;}
+.progress-label{font-size:.72rem;color:var(--muted);white-space:nowrap;font-family:'Syne',sans-serif;font-weight:700;}
+.progress-bar{flex:1;height:7px;background:var(--surface2);border-radius:var(--radius-pill);overflow:hidden;border:1px solid var(--border);}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--teal));border-radius:var(--radius-pill);transition:width .5s ease;}
+.xp-display{font-size:.72rem;font-family:'Syne',sans-serif;color:var(--accent);white-space:nowrap;font-weight:700;}
+
+/* NAV */
+nav{background:var(--surface);border-bottom:1px solid var(--border);display:flex;overflow-x:auto;scrollbar-width:none;position:sticky;top:0;z-index:50;box-shadow:0 1px 0 var(--border),var(--shadow-sm);}
+nav::-webkit-scrollbar{display:none;}
+.nav-btn{flex-shrink:0;background:none;border:none;border-bottom:2.5px solid transparent;padding:.75rem 1rem;font-family:'Syne',sans-serif;font-size:.72rem;font-weight:700;color:var(--muted);cursor:pointer;transition:all .2s;white-space:nowrap;letter-spacing:.3px;text-transform:uppercase;}
+.nav-btn.active{color:var(--accent);border-bottom-color:var(--accent);}
+.nav-btn:hover:not(.active){color:var(--text2);}
+
+/* MAIN */
+main{max-width:860px;margin:0 auto;padding:1.5rem 1rem 5rem;}
+.section{display:none;}
+.section.active{display:block;animation:fadeUp .3s ease;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+
+/* SECTION HEADER */
+.sec-head{margin-bottom:1.5rem;}
+.sec-head h2{font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:var(--text);}
+.sec-head h2 span{color:var(--accent);}
+.sec-head p{color:var(--muted);font-size:.88rem;margin-top:.3rem;}
+
+/* CARDS */
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;margin-bottom:1rem;box-shadow:var(--shadow-sm);}
+.card:hover{border-color:var(--border2);box-shadow:var(--shadow-md);}
+
+/* TAGS */
+.tag{display:inline-block;padding:.2rem .6rem;border-radius:var(--radius-pill);font-size:.68rem;font-family:'Syne',sans-serif;font-weight:700;letter-spacing:.3px;margin-right:.3rem;}
+.tag-a1{background:var(--green-light);color:var(--green);border:1px solid rgba(22,163,74,.2);}
+.tag-a2{background:#eff6ff;color:var(--blue);border:1px solid rgba(37,99,235,.2);}
+.tag-b1{background:var(--gold-light);color:var(--gold);border:1px solid rgba(217,119,6,.2);}
+.tag-b2{background:var(--lavender-light);color:var(--lavender);border:1px solid rgba(124,92,219,.2);}
+.tag-c1{background:var(--coral-light);color:var(--coral);border:1px solid rgba(239,68,68,.2);}
+
+/* SPEAK BUTTON */
+.speak-btn{background:var(--teal-light);border:1px solid rgba(14,165,160,.25);border-radius:var(--radius-pill);padding:.2rem .65rem;font-size:.72rem;color:var(--teal);cursor:pointer;transition:all .2s;display:inline-flex;align-items:center;gap:.3rem;font-family:'Syne',sans-serif;font-weight:700;}
+.speak-btn:hover{background:rgba(14,165,160,.18);border-color:var(--teal);}
+.speak-btn.playing{animation:pulse 1s infinite;}
+@keyframes pulse{0%,100%{opacity:1;}50%{opacity:.55;}}
+
+/* FILTER PILLS */
+.pills{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.2rem;}
+.pill{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-pill);padding:.35rem .9rem;font-size:.75rem;font-family:'Syne',sans-serif;font-weight:700;cursor:pointer;transition:all .2s;color:var(--muted);box-shadow:var(--shadow-sm);}
+.pill.active,.pill:hover{background:var(--accent);color:#fff;border-color:var(--accent);box-shadow:0 2px 8px rgba(79,110,247,.3);}
+
+/* VOCAB GRID */
+.vocab-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.75rem;}
+.vcard{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;cursor:pointer;transition:all .2s;position:relative;box-shadow:var(--shadow-sm);}
+.vcard:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:var(--shadow-md);}
+.vcard .em{font-size:1.8rem;display:block;margin-bottom:.4rem;}
+.vcard .en{font-weight:700;font-size:.95rem;color:var(--text);}
+.vcard .ph{font-size:.72rem;color:var(--accent);font-style:italic;margin:.15rem 0;}
+.vcard .fr{font-size:.8rem;color:var(--muted);display:none;}
+.vcard.revealed .fr{display:block;color:var(--teal);font-weight:600;}
+.vcard .lvl{position:absolute;top:.5rem;right:.5rem;}
+
+/* GRAMMAR TABLES */
+.gtable{width:100%;border-collapse:collapse;font-size:.85rem;}
+.gtable th{background:var(--surface2);color:var(--accent);font-family:'Syne',sans-serif;font-size:.7rem;text-transform:uppercase;letter-spacing:.5px;padding:.6rem .8rem;text-align:left;border-bottom:2px solid var(--border);}
+.gtable td{padding:.55rem .8rem;border-bottom:1px solid var(--border);vertical-align:top;color:var(--text2);}
+.gtable tr:last-child td{border-bottom:none;}
+.gtable .en-cell{color:var(--teal);font-style:italic;font-weight:600;}
+.gtable .ex-cell{color:var(--muted);font-size:.78rem;}
+.gtable tr:hover td{background:var(--surface2);}
+
+/* TENSE BLOCK */
+.tense-block{margin-bottom:1.5rem;}
+.tense-title{font-family:'Syne',sans-serif;font-size:.82rem;font-weight:700;color:var(--accent);margin-bottom:.6rem;display:flex;align-items:center;gap:.5rem;text-transform:uppercase;letter-spacing:.4px;}
+.tense-title::after{content:'';flex:1;height:1px;background:var(--border);}
+
+/* PHRASE CARDS */
+.phrase-card{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--accent);border-radius:0 var(--radius) var(--radius) 0;padding:.9rem 1rem;margin-bottom:.75rem;cursor:pointer;transition:all .2s;box-shadow:var(--shadow-sm);}
+.phrase-card:hover{border-left-color:var(--teal);box-shadow:var(--shadow-md);background:var(--surface2);}
+.phrase-card .en{font-size:.95rem;font-weight:700;display:flex;justify-content:space-between;align-items:flex-start;gap:.5rem;color:var(--text);}
+.phrase-card .fr{font-size:.82rem;color:var(--muted);margin-top:.25rem;}
+.phrase-card .ctx{font-size:.68rem;color:var(--lavender);margin-top:.3rem;font-family:'Syne',sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:.4px;}
+
+/* IDIOMS */
+.idiom-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.1rem;margin-bottom:.75rem;box-shadow:var(--shadow-sm);transition:box-shadow .2s;}
+.idiom-card:hover{box-shadow:var(--shadow-md);}
+.idiom-card .phrase{font-size:1rem;font-weight:700;color:var(--lavender);}
+.idiom-card .meaning{font-size:.85rem;color:var(--text2);margin:.3rem 0;}
+.idiom-card .example{font-size:.82rem;color:var(--teal);font-style:italic;}
+.idiom-card .lit{font-size:.75rem;color:var(--muted);margin-top:.2rem;}
+
+/* FALSE FRIENDS */
+.ff-card{display:grid;grid-template-columns:1fr auto 1fr;gap:.5rem;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.9rem;margin-bottom:.75rem;box-shadow:var(--shadow-sm);}
+.ff-card .word{font-size:.95rem;font-weight:700;color:var(--text);}
+.ff-card .wrong{color:var(--coral);}
+.ff-card .right{color:var(--green);}
+.ff-card .arrow{color:var(--muted);font-size:1.2rem;}
+.ff-card .label{font-size:.67rem;color:var(--muted);font-family:'Syne',sans-serif;text-transform:uppercase;letter-spacing:.3px;}
+
+/* QUIZ */
+.quiz-wrap{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;box-shadow:var(--shadow-sm);}
+.quiz-mode-bar{display:none;}
+.quiz-q{font-size:1.3rem;font-weight:700;text-align:center;margin-bottom:.4rem;color:var(--text);}
+.quiz-hint{font-size:.82rem;color:var(--muted);text-align:center;margin-bottom:1.2rem;}
+.quiz-opts{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;}
+.qopt{background:var(--surface2);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:.85rem;font-size:.88rem;cursor:pointer;transition:all .2s;text-align:left;color:var(--text2);font-family:'Literata',serif;}
+.qopt:hover:not(:disabled){border-color:var(--accent);background:#eef1ff;color:var(--accent);}
+.qopt.correct{background:var(--green-light);border-color:rgba(22,163,74,.4);color:var(--green);}
+.qopt.wrong{background:var(--coral-light);border-color:rgba(239,68,68,.4);color:var(--coral);}
+.qfeedback{margin-top:1rem;font-size:.88rem;text-align:center;min-height:1.2rem;font-weight:600;}
+.qnext{margin-top:1rem;background:var(--accent);color:#fff;border:none;border-radius:var(--radius-pill);padding:.65rem 1.8rem;font-family:'Syne',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;display:none;transition:all .2s;box-shadow:0 2px 8px rgba(79,110,247,.3);}
+.qnext:hover{background:var(--accent2);box-shadow:0 4px 14px rgba(79,110,247,.4);}
+.qnext.show{display:inline-block;}
+.score-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;}
+.score-pill{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-pill);padding:.3rem 1rem;font-size:.75rem;font-family:'Syne',sans-serif;font-weight:700;color:var(--accent);}
+
+/* FILL IN BLANK */
+.fib-sentence{font-size:1.1rem;text-align:center;margin-bottom:1.2rem;line-height:1.8;color:var(--text);}
+.fib-blank{display:inline-block;border-bottom:2.5px solid var(--accent);min-width:80px;padding:0 .3rem;text-align:center;color:var(--accent);font-weight:700;}
+.fib-opts{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-bottom:.8rem;}
+.fib-opt{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:.4rem .9rem;font-size:.88rem;cursor:pointer;transition:all .2s;color:var(--text2);}
+.fib-opt:hover:not(:disabled){border-color:var(--teal);color:var(--teal);background:var(--teal-light);}
+.fib-opt.correct{background:var(--green-light);border-color:rgba(22,163,74,.4);color:var(--green);}
+.fib-opt.wrong{background:var(--coral-light);border-color:rgba(239,68,68,.4);color:var(--coral);}
+
+/* DICTATION */
+.dicta-wrap{text-align:center;}
+.dicta-play{background:var(--teal);color:#fff;border:none;border-radius:var(--radius-pill);padding:.8rem 2rem;font-family:'Syne',sans-serif;font-size:.85rem;font-weight:700;cursor:pointer;margin-bottom:.75rem;display:inline-flex;align-items:center;gap:.5rem;transition:all .2s;box-shadow:0 2px 8px rgba(14,165,160,.3);}
+.dicta-play:hover{background:var(--teal);opacity:.88;box-shadow:0 4px 14px rgba(14,165,160,.4);}
+.dicta-input{width:100%;background:var(--surface2);border:1.5px solid var(--border);border-radius:var(--radius-sm);padding:.75rem 1rem;color:var(--text);font-family:'Literata',serif;font-size:.95rem;resize:none;outline:none;transition:border .2s;}
+.dicta-input:focus{border-color:var(--accent);background:#fff;box-shadow:0 0 0 3px rgba(79,110,247,.1);}
+.dicta-check{background:var(--accent);color:#fff;border:none;border-radius:var(--radius-pill);padding:.6rem 1.5rem;font-family:'Syne',sans-serif;font-size:.82rem;font-weight:700;cursor:pointer;margin-top:.75rem;box-shadow:0 2px 8px rgba(79,110,247,.25);transition:all .2s;}
+.dicta-check:hover{background:var(--accent2);}
+.dicta-result{margin-top:.8rem;font-size:.85rem;line-height:1.8;}
+.dicta-result .ok{color:var(--green);font-weight:600;}
+.dicta-result .err{color:var(--coral);text-decoration:underline;font-weight:600;}
+
+/* WORD ORDER */
+.wo-target{min-height:52px;background:var(--surface2);border:1.5px dashed var(--border2);border-radius:var(--radius-sm);padding:.5rem;display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:.75rem;transition:border .2s;}
+.wo-target.drag-over{border-color:var(--accent);}
+.wo-words{display:flex;flex-wrap:wrap;gap:.4rem;}
+.wo-word{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:.35rem .75rem;font-size:.88rem;cursor:grab;user-select:none;transition:all .2s;box-shadow:var(--shadow-sm);color:var(--text2);}
+.wo-word:hover{border-color:var(--accent);color:var(--accent);box-shadow:var(--shadow-md);}
+.wo-word.placed{background:#eef1ff;border-color:rgba(79,110,247,.4);color:var(--accent);cursor:pointer;font-weight:600;}
+.wo-check{background:var(--accent);color:#fff;border:none;border-radius:var(--radius-pill);padding:.5rem 1.2rem;font-family:'Syne',sans-serif;font-size:.78rem;font-weight:700;cursor:pointer;box-shadow:0 2px 8px rgba(79,110,247,.25);transition:all .2s;}
+.wo-check:hover{background:var(--accent2);}
+.wo-feedback{font-size:.85rem;margin-top:.6rem;min-height:1rem;}
+
+/* DIALOGUES */
+.dlg-box{max-width:540px;margin:0 auto;}
+.dlg-msg{display:flex;gap:.7rem;margin-bottom:.9rem;animation:fadeUp .2s ease;}
+.dlg-msg.right{flex-direction:row-reverse;}
+.dlg-avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;box-shadow:var(--shadow-sm);}
+.dlg-msg.left .dlg-avatar{background:var(--teal-light);border:1.5px solid rgba(14,165,160,.25);}
+.dlg-msg.right .dlg-avatar{background:#eef1ff;border:1.5px solid rgba(79,110,247,.25);}
+.dlg-bubble{max-width:82%;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:.75rem 1rem;font-size:.88rem;line-height:1.55;cursor:pointer;transition:all .2s;box-shadow:var(--shadow-sm);}
+.dlg-msg.right .dlg-bubble{background:#eef1ff;border-color:rgba(79,110,247,.2);}
+.dlg-bubble:hover{border-color:var(--accent);box-shadow:var(--shadow-md);}
+.dlg-tr{font-size:.75rem;color:var(--teal);font-style:italic;margin-top:.3rem;}
+
+/* PRONUNCIATION GUIDE */
+.pron-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:.6rem;}
+.pron-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-sm);padding:.8rem;text-align:center;cursor:pointer;transition:all .2s;box-shadow:var(--shadow-sm);}
+.pron-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:var(--shadow-md);}
+.pron-card .symbol{font-size:1.5rem;color:var(--accent);font-family:'Syne',sans-serif;font-weight:800;}
+.pron-card .name{font-size:.7rem;color:var(--muted);margin:.2rem 0;font-family:'Syne',sans-serif;}
+.pron-card .words{font-size:.78rem;color:var(--teal);font-style:italic;}
+
+/* TIPS */
+.tip-card{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--lavender);border-radius:0 var(--radius) var(--radius) 0;padding:1rem 1.1rem;margin-bottom:.75rem;display:flex;gap:.8rem;box-shadow:var(--shadow-sm);transition:box-shadow .2s;}
+.tip-card:hover{box-shadow:var(--shadow-md);}
+.tip-card .ico{font-size:1.4rem;flex-shrink:0;}
+.tip-card strong{display:block;font-family:'Syne',sans-serif;font-size:.85rem;margin-bottom:.3rem;color:var(--lavender);}
+.tip-card p{font-size:.83rem;color:var(--text2);line-height:1.6;}
+
+/* READING */
+.reading-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.3rem;margin-bottom:1rem;box-shadow:var(--shadow-sm);}
+.reading-card .rtitle{font-family:'Syne',sans-serif;font-size:.9rem;font-weight:700;margin-bottom:.1rem;display:flex;justify-content:space-between;align-items:center;color:var(--text);}
+.reading-card .rtext{font-size:.88rem;line-height:1.9;color:var(--text2);margin:.75rem 0;}
+.reading-card .rtext .vocab-hl{color:var(--teal);cursor:pointer;border-bottom:1px dashed var(--teal);font-weight:600;}
+.reading-q{font-size:.85rem;font-weight:700;margin-top:.8rem;color:var(--text);}
+.reading-opts{display:grid;grid-template-columns:1fr 1fr;gap:.4rem;margin-top:.5rem;}
+.reading-opt{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:.5rem .7rem;font-size:.8rem;cursor:pointer;color:var(--text2);transition:all .2s;}
+.reading-opt:hover:not(:disabled){border-color:var(--accent);color:var(--accent);background:#eef1ff;}
+.reading-opt.correct{background:var(--green-light);border-color:rgba(22,163,74,.4);color:var(--green);}
+.reading-opt.wrong{background:var(--coral-light);border-color:rgba(239,68,68,.4);color:var(--coral);}
+
+/* PROVERBS */
+.proverb-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:1.2rem;margin-bottom:.75rem;position:relative;overflow:hidden;box-shadow:var(--shadow-sm);transition:box-shadow .2s;}
+.proverb-card:hover{box-shadow:var(--shadow-md);}
+.proverb-card::before{content:'\201C';position:absolute;top:-.4rem;left:.6rem;font-size:5rem;color:rgba(79,110,247,.06);font-family:'Syne',sans-serif;font-weight:800;line-height:1;}
+.proverb-card .prov-en{font-size:1rem;font-style:italic;font-weight:600;color:var(--text);position:relative;}
+.proverb-card .prov-fr{font-size:.83rem;color:var(--muted);margin-top:.4rem;}
+.proverb-card .prov-meaning{font-size:.8rem;color:var(--teal);margin-top:.35rem;font-weight:600;}
+
+/* STREAK */
+.streak-bar{background:var(--surface);padding:.6rem 1.5rem;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;}
+.streak-days{display:flex;gap:.3rem;}
+.streak-day{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:.62rem;font-family:'Syne',sans-serif;font-weight:700;color:var(--muted);}
+.streak-day.done{background:var(--gold);color:#fff;border-color:var(--gold);box-shadow:0 1px 4px rgba(217,119,6,.3);}
+.streak-day.today{border-color:var(--accent);color:var(--accent);background:#eef1ff;}
+
+/* ALPHABET */
+.alpha-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(48px,1fr));gap:.5rem;margin-bottom:1.2rem;}
+.alpha-btn{aspect-ratio:1;background:var(--surface);border:1.5px solid var(--border);border-radius:var(--radius-sm);font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;cursor:pointer;color:var(--text);transition:all .15s;display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-sm);}
+.alpha-btn:hover{background:#eef1ff;border-color:var(--accent);color:var(--accent);transform:translateY(-2px);box-shadow:var(--shadow-md);}
+.alpha-info{background:linear-gradient(135deg,#eef1ff,#f0faff);border:1.5px solid rgba(79,110,247,.2);border-radius:var(--radius);padding:1rem 1.2rem;margin-bottom:1rem;display:none;animation:fadeUp .2s ease;}
+.alpha-info.show{display:block;}
+.alpha-info .snd{font-size:1.4rem;font-family:'Syne',sans-serif;font-weight:800;color:var(--accent);}
+.alpha-info .exs{color:var(--teal);font-style:italic;margin-top:.3rem;font-size:.88rem;font-weight:600;}
+
+/* CONJ */
+.conj-grid{display:grid;grid-template-columns:1fr 1fr;gap:.4rem;}
+.conj-item{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:.4rem .7rem;font-size:.82rem;}
+.conj-item .pro{color:var(--muted);font-size:.7rem;}
+.conj-item .verb{color:var(--teal);font-weight:700;}
+.conj-item .meaning{color:var(--muted);font-size:.7rem;font-style:italic;}
+
+@media(max-width:500px){
+  .quiz-opts,.reading-opts{grid-template-columns:1fr;}
+  .vocab-grid{grid-template-columns:repeat(2,1fr);}
+  .pron-grid{grid-template-columns:repeat(2,1fr);}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>English <span>Master</span> 🇬🇧</h1>
+  <p>De A1 à C1 — Vocabulaire · Grammaire · Prononciation · Écriture</p>
+  <div class="level-badge">
+    <span class="badge a1">A1 Débutant</span>
+    <span class="badge a1">A2 Élémentaire</span>
+    <span class="badge b1">B1 Intermédiaire</span>
+    <span class="badge b1">B2 Avancé</span>
+    <span class="badge c1">C1 Maîtrise</span>
+  </div>
+</header>
+
+<div class="streak-bar">
+  <span style="font-family:'Syne',sans-serif;font-size:.72rem;color:var(--muted);font-weight:700;">🔥 Série :</span>
+  <div class="streak-days" id="streakDays"></div>
+  <span style="font-family:'Syne',sans-serif;font-size:.72rem;color:var(--accent);font-weight:700;" id="streakCount">0 jours</span>
+</div>
+
+<div class="progress-wrap">
+  <span class="progress-label">XP :</span>
+  <div class="progress-bar"><div class="progress-fill" id="xpFill" style="width:0%"></div></div>
+  <span class="xp-display" id="xpDisplay">0 / 100 XP</span>
+</div>
+
+<nav id="mainNav">
+  <button class="nav-btn active" onclick="showSection('alphabet',this)">🔤 Alphabet</button>
+  <button class="nav-btn" onclick="showSection('vocab',this)">📚 Vocabulaire</button>
+  <button class="nav-btn" onclick="showSection('grammar',this)">📐 Grammaire</button>
+  <button class="nav-btn" onclick="showSection('phrases',this)">💬 Phrases</button>
+  <button class="nav-btn" onclick="showSection('idioms',this)">🎭 Idiomes</button>
+  <button class="nav-btn" onclick="showSection('quiz',this)">🎯 Quiz</button>
+  <button class="nav-btn" onclick="showSection('fillblank',this)">✏️ Lacunes</button>
+  <button class="nav-btn" onclick="showSection('wordorder',this)">🔀 Ordre</button>
+  <button class="nav-btn" onclick="showSection('dictation',this)">🎧 Dictée</button>
+  <button class="nav-btn" onclick="showSection('reading',this)">📖 Lecture</button>
+  <button class="nav-btn" onclick="showSection('dialogues',this)">🗣️ Dialogues</button>
+  <button class="nav-btn" onclick="showSection('proverbs',this)">🌟 Proverbes</button>
+  <button class="nav-btn" onclick="showSection('falsefriends',this)">⚠️ Faux-amis</button>
+  <button class="nav-btn" onclick="showSection('tips',this)">💡 Méthodes</button>
+</nav>
+
+<main>
+
+<!-- ====== ALPHABET ====== -->
+<section id="alphabet" class="section active">
+  <div class="sec-head"><h2>🔤 Alphabet &amp; <span>Phonétique</span></h2><p>Clique sur chaque lettre pour entendre sa prononciation exacte</p></div>
+  <div class="alpha-grid" id="alphaGrid"></div>
+  <div class="alpha-info" id="alphaInfo"></div>
+  <div class="card">
+    <div class="tense-title">44 Sons Phonétiques de l'Anglais</div>
+    <div class="pron-grid" id="phonGrid"></div>
+  </div>
+  <div class="card">
+    <div class="tense-title">Règles de Prononciation Essentielles</div>
+    <table class="gtable" id="pronRulesTable"></table>
+  </div>
+</section>
+
+<!-- ====== VOCAB ====== -->
+<section id="vocab" class="section">
+  <div class="sec-head"><h2>📚 <span>Vocabulaire</span> Complet</h2><p>+250 mots essentiels · Clique pour révéler · 🔊 pour écouter</p></div>
+  <div class="pills" id="vocabPills"></div>
+  <div class="vocab-grid" id="vocabGrid"></div>
+</section>
+
+<!-- ====== GRAMMAR ====== -->
+<section id="grammar" class="section">
+  <div class="sec-head"><h2>📐 <span>Grammaire</span> Complète</h2><p>Les 12 temps anglais + structures essentielles</p></div>
+  <div class="pills" id="grammarPills"></div>
+  <div id="grammarContent"></div>
+</section>
+
+<!-- ====== PHRASES ====== -->
+<section id="phrases" class="section">
+  <div class="sec-head"><h2>💬 <span>Phrases</span> Essentielles</h2><p>Clique sur une phrase pour l'écouter · Plus de 80 phrases classées par situation</p></div>
+  <div class="pills" id="phrasesPills"></div>
+  <div id="phrasesContent"></div>
+</section>
+
+<!-- ====== IDIOMS ====== -->
+<section id="idioms" class="section">
+  <div class="sec-head"><h2>🎭 Expressions <span>Idiomatiques</span></h2><p>Parle comme un natif avec ces 40+ expressions incontournables</p></div>
+  <div id="idiomsContent"></div>
+</section>
+
+<!-- ====== QUIZ ====== -->
+<section id="quiz" class="section">
+  <div class="sec-head"><h2>🎯 <span>Quiz</span> Adaptatif</h2><p>Vocabulaire · Grammaire · Traduction · Niveaux mélangés</p></div>
+  <div class="score-bar">
+    <div class="score-pill">🏆 <span id="qScore">0</span> / <span id="qTotal">0</span></div>
+    <div class="score-pill">🎯 Série : <span id="qStreak">0</span></div>
+  </div>
+  <div class="quiz-wrap">
+    <div class="quiz-mode-bar" id="quizModeBar"></div>
+    <div class="quiz-q" id="quizQ"></div>
+    <div class="quiz-hint" id="quizHint"></div>
+    <div class="quiz-opts" id="quizOpts"></div>
+    <div class="qfeedback" id="quizFeedback"></div>
+    <button class="qnext" id="qNextBtn" onclick="nextQuizQ()">Suivant →</button>
+  </div>
+</section>
+
+<!-- ====== FILL IN BLANK ====== -->
+<section id="fillblank" class="section">
+  <div class="sec-head"><h2>✏️ Complète les <span>Lacunes</span></h2><p>Choisis le bon mot pour compléter chaque phrase</p></div>
+  <div class="score-bar">
+    <div class="score-pill">✅ <span id="fibScore">0</span> / <span id="fibTotal">0</span></div>
+  </div>
+  <div class="card" id="fibCard">
+    <div class="fib-sentence" id="fibSentence"></div>
+    <div class="fib-opts" id="fibOpts"></div>
+    <div class="qfeedback" id="fibFeedback"></div>
+    <button class="qnext" id="fibNext" onclick="nextFib()">Suivant →</button>
+  </div>
+</section>
+
+<!-- ====== WORD ORDER ====== -->
+<section id="wordorder" class="section">
+  <div class="sec-head"><h2>🔀 Ordre des <span>Mots</span></h2><p>Remets les mots dans le bon ordre pour former une phrase correcte</p></div>
+  <div class="score-bar"><div class="score-pill">✅ <span id="woScore">0</span> / <span id="woTotal">0</span></div></div>
+  <div class="card" id="woCard">
+    <div style="font-size:.75rem;color:var(--muted);font-family:'Syne',sans-serif;font-weight:700;margin-bottom:.5rem;text-transform:uppercase;letter-spacing:.3px;">🇫🇷 Traduis :</div>
+    <div id="woFrench" style="font-size:1rem;font-weight:600;margin-bottom:1rem;color:var(--text);"></div>
+    <div style="font-size:.75rem;color:var(--muted);font-family:'Syne',sans-serif;font-weight:700;margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.3px;">🧩 Construis la phrase :</div>
+    <div class="wo-target" id="woTarget"></div>
+    <div style="font-size:.75rem;color:var(--muted);font-family:'Syne',sans-serif;font-weight:700;margin-bottom:.4rem;text-transform:uppercase;letter-spacing:.3px;">🔤 Mots disponibles :</div>
+    <div class="wo-words" id="woWords"></div>
+    <div style="margin-top:.8rem;display:flex;gap:.5rem;align-items:center;">
+      <button class="wo-check" onclick="checkWordOrder()">Vérifier ✓</button>
+      <button class="wo-check" style="background:var(--surface2);color:var(--muted);" onclick="resetWordOrder()">Reset ↺</button>
+    </div>
+    <div class="wo-feedback" id="woFeedback"></div>
+    <button class="qnext" id="woNext" onclick="nextWordOrder()">Suivant →</button>
+  </div>
+</section>
+
+<!-- ====== DICTATION ====== -->
+<section id="dictation" class="section">
+  <div class="sec-head"><h2>🎧 <span>Dictée</span> Anglaise</h2><p>Écoute la phrase et écris ce que tu entends</p></div>
+  <div class="score-bar"><div class="score-pill">✅ <span id="dictaScore">0</span> / <span id="dictaTotal">0</span></div></div>
+  <div class="card">
+    <div class="dicta-wrap">
+      <div style="margin-bottom:.8rem;font-size:.82rem;color:var(--muted);" id="dictaLevel"></div>
+      <button class="dicta-play" onclick="playDictation()" id="dictaBtn">🔊 Écouter la phrase</button>
+      <button class="dicta-play" style="background:var(--surface2);color:var(--muted);" onclick="playDictation(0.6)">🐢 Écouter lentement</button>
+      <textarea class="dicta-input" id="dictaInput" rows="2" placeholder="Écris ce que tu entends..."></textarea>
+      <br>
+      <button class="dicta-check" onclick="checkDictation()">Vérifier ✓</button>
+      <div class="dicta-result" id="dictaResult"></div>
+      <button class="qnext" id="dictaNext" onclick="nextDictation()">Suivant →</button>
+    </div>
+  </div>
+</section>
+
+<!-- ====== READING ====== -->
+<section id="reading" class="section">
+  <div class="sec-head"><h2>📖 <span>Lecture</span> &amp; Compréhension</h2><p>Textes authentiques avec questions de compréhension</p></div>
+  <div id="readingContent"></div>
+</section>
+
+<!-- ====== DIALOGUES ====== -->
+<section id="dialogues" class="section">
+  <div class="sec-head"><h2>🗣️ <span>Dialogues</span> Pratiques</h2><p>Clique sur une bulle pour écouter · Situations réelles</p></div>
+  <div class="pills" id="dlgPills"></div>
+  <div class="dlg-box" id="dlgBox"></div>
+</section>
+
+<!-- ====== PROVERBS ====== -->
+<section id="proverbs" class="section">
+  <div class="sec-head"><h2>🌟 <span>Proverbes</span> Anglais</h2><p>Apprends la sagesse et la culture anglophone</p></div>
+  <div id="proverbsContent"></div>
+</section>
+
+<!-- ====== FALSE FRIENDS ====== -->
+<section id="falsefriends" class="section">
+  <div class="sec-head"><h2>⚠️ <span>Faux Amis</span></h2><p>Les mots qui ressemblent au français mais qui signifient autre chose — erreurs classiques !</p></div>
+  <div id="ffContent"></div>
+</section>
+
+<!-- ====== TIPS ====== -->
+<section id="tips" class="section">
+  <div class="sec-head"><h2>💡 <span>Méthodes</span> Efficaces</h2><p>Stratégies prouvées pour maîtriser l'anglais rapidement</p></div>
+  <div id="tipsContent"></div>
+</section>
+
+</main>
+
+<script>
+// ============================================================
+// TTS
+// ============================================================
+let ttsAudio = null;
+function speak(text, rate = 1) {
+  if (ttsAudio) { ttsAudio.pause(); ttsAudio.src = ''; ttsAudio = null; }
+  const url = `https://translate.google.com/translate_tts?ie=UTF-8&tl=en-US&client=tw-ob&q=${encodeURIComponent(text)}`;
+  ttsAudio = new Audio(url);
+  ttsAudio.addEventListener('canplay', () => { ttsAudio.playbackRate = rate; }, { once: true });
+  ttsAudio.playbackRate = rate;
+  ttsAudio.play().catch(() => {
+    if ('speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+      const utt = new SpeechSynthesisUtterance(text);
+      utt.lang = 'en-US'; utt.rate = rate * 0.85;
+      const voices = window.speechSynthesis.getVoices();
+      const v = voices.find(x => x.lang === 'en-US') || voices.find(x => x.lang.startsWith('en'));
+      if (v) utt.voice = v;
+      window.speechSynthesis.speak(utt);
+    }
+  });
+}
+
+// Helper: speak text stored in data attribute (safe for apostrophes in HTML)
+function speakEl(el) { speak(el.dataset.text || ''); }
+
+// ============================================================
+// XP SYSTEM
+// ============================================================
+let xp = 0;
+try { xp = parseInt(localStorage.getItem('xp') || '0'); } catch(e) {}
+function addXP(n) {
+  xp += n;
+  try { localStorage.setItem('xp', xp); } catch(e) {}
+  const level = Math.floor(xp / 100);
+  const pct = (xp % 100);
+  document.getElementById('xpFill').style.width = pct + '%';
+  document.getElementById('xpDisplay').textContent = `Niv.${level + 1} — ${pct} / 100 XP`;
+}
+// Init XP display on load
+(function initXPDisplay() {
+  const level = Math.floor(xp / 100);
+  const pct = xp % 100;
+  document.getElementById('xpFill').style.width = pct + '%';
+  document.getElementById('xpDisplay').textContent = 'Niv.' + (level+1) + ' — ' + pct + ' / 100 XP';
+})();
+
+// Streak
+function initStreak() {
+  const days = ['L','M','M','J','V','S','D'];
+  const today = new Date().getDay();
+  const todayIdx = today === 0 ? 6 : today - 1;
+  const wrap = document.getElementById('streakDays');
+  let savedStreak = 0;
+  try { savedStreak = parseInt(localStorage.getItem('streakDays') || '0'); } catch(e) {}
+  days.forEach((d, i) => {
+    const el = document.createElement('div');
+    const isToday = i === todayIdx;
+    const isDone = i < todayIdx && i < savedStreak;
+    el.className = 'streak-day' + (isToday ? ' today' : '') + (isDone ? ' done' : '');
+    el.textContent = d;
+    wrap.appendChild(el);
+  });
+  const countEl = document.getElementById('streakCount');
+  if (countEl) countEl.textContent = savedStreak + ' jour' + (savedStreak > 1 ? 's' : '');
+}
+initStreak();
+
+// ============================================================
+// DATA
+// ============================================================
+
+// ALPHABET
+const ALPHABET = [
+  {l:'A',s:'eɪ',ex:'Apple, Animal, Art'},
+  {l:'B',s:'biː',ex:'Book, Bus, Ball'},
+  {l:'C',s:'siː',ex:'Car, Cat, Code'},
+  {l:'D',s:'diː',ex:'Dog, Door, Data'},
+  {l:'E',s:'iː',ex:'Egg, Eye, Error'},
+  {l:'F',s:'ɛf',ex:'Fish, File, Fast'},
+  {l:'G',s:'dʒiː',ex:'Girl, Go, Green'},
+  {l:'H',s:'eɪtʃ',ex:'House, Hello, Help'},
+  {l:'I',s:'aɪ',ex:'Ice, Island, Input'},
+  {l:'J',s:'dʒeɪ',ex:'Juice, Job, Java'},
+  {l:'K',s:'keɪ',ex:'Key, King, Keyboard'},
+  {l:'L',s:'ɛl',ex:'Love, Lion, Loop'},
+  {l:'M',s:'ɛm',ex:'Moon, Man, Memory'},
+  {l:'N',s:'ɛn',ex:'Night, Name, Network'},
+  {l:'O',s:'oʊ',ex:'Ocean, Open, Object'},
+  {l:'P',s:'piː',ex:'Phone, Park, Python'},
+  {l:'Q',s:'kjuː',ex:'Queen, Quick, Query'},
+  {l:'R',s:'ɑːr',ex:'Rain, Red, Request'},
+  {l:'S',s:'ɛs',ex:'Sun, Star, Server'},
+  {l:'T',s:'tiː',ex:'Time, Tree, Token'},
+  {l:'U',s:'juː',ex:'Umbrella, Up, User'},
+  {l:'V',s:'viː',ex:'Voice, Village, Value'},
+  {l:'W',s:'ˈdʌbljuː',ex:'Water, Work, Widget'},
+  {l:'X',s:'ɛks',ex:'Box, Extra, XML'},
+  {l:'Y',s:'waɪ',ex:'Year, Yellow, YAML'},
+  {l:'Z',s:'ziː',ex:'Zero, Zone, ZIP'},
+];
+
+// PHONETICS
+const PHONETICS = [
+  {sym:'iː',name:'Long i',words:'see, tree, he'},
+  {sym:'ɪ',name:'Short i',words:'sit, big, it'},
+  {sym:'e',name:'Short e',words:'bed, red, get'},
+  {sym:'æ',name:'Flat a',words:'cat, bad, man'},
+  {sym:'ɑː',name:'Long a',words:'car, far, arm'},
+  {sym:'ɒ',name:'Short o',words:'hot, dog, on'},
+  {sym:'ɔː',name:'Long o',words:'more, door, four'},
+  {sym:'ʊ',name:'Short u',words:'book, put, good'},
+  {sym:'uː',name:'Long u',words:'blue, food, you'},
+  {sym:'ʌ',name:'Cup u',words:'cup, run, sun'},
+  {sym:'ɜː',name:'Bird er',words:'bird, word, her'},
+  {sym:'ə',name:'Schwa',words:'about, the, a'},
+  {sym:'eɪ',name:'Day',words:'day, say, game'},
+  {sym:'aɪ',name:'My',words:'my, time, sky'},
+  {sym:'ɔɪ',name:'Boy',words:'boy, oil, coin'},
+  {sym:'əʊ',name:'Go',words:'go, home, show'},
+  {sym:'aʊ',name:'Now',words:'now, out, town'},
+  {sym:'ɪə',name:'Near',words:'near, here, ear'},
+  {sym:'eə',name:'Hair',words:'hair, there, care'},
+  {sym:'ʊə',name:'Sure',words:'sure, pure, tour'},
+  {sym:'p',name:'P',words:'pen, cup, stop'},
+  {sym:'b',name:'B',words:'bad, job, rib'},
+  {sym:'t',name:'T',words:'ten, cat, boat'},
+  {sym:'d',name:'D',words:'dog, old, hard'},
+  {sym:'k',name:'K',words:'key, back, clock'},
+  {sym:'g',name:'G',words:'go, egg, big'},
+  {sym:'f',name:'F',words:'fat, off, cough'},
+  {sym:'v',name:'V',words:'van, live, of'},
+  {sym:'θ',name:'TH fort',words:'think, three, math'},
+  {sym:'ð',name:'TH doux',words:'the, this, father'},
+  {sym:'s',name:'S',words:'sun, miss, yes'},
+  {sym:'z',name:'Z',words:'zoo, jazz, nose'},
+  {sym:'ʃ',name:'SH',words:'she, wish, sugar'},
+  {sym:'ʒ',name:'ZH',words:'vision, pleasure'},
+  {sym:'h',name:'H',words:'hot, ahead, who'},
+  {sym:'m',name:'M',words:'man, swim, palm'},
+  {sym:'n',name:'N',words:'no, ten, sun'},
+  {sym:'ŋ',name:'NG',words:'sing, long, thank'},
+  {sym:'l',name:'L',words:'leg, well, feel'},
+  {sym:'r',name:'R',words:'red, try, very'},
+  {sym:'j',name:'Y',words:'yes, you, use'},
+  {sym:'w',name:'W',words:'wet, win, one'},
+  {sym:'tʃ',name:'CH',words:'chin, church, catch'},
+  {sym:'dʒ',name:'J/DG',words:'job, age, judge'},
+];
+
+const PRON_RULES = [
+  {rule:'E final muet','en':'come, make, time','ex':'Le "e" à la fin ne se prononce pas'},
+  {rule:'EA = "iː"','en':'read, beach, tea','ex':'"ea" se prononce comme "ee"'},
+  {rule:'OO = "uː"','en':'food, moon, school','ex':'"oo" = son long "ou"'},
+  {rule:'OO = "ʊ"','en':'book, look, cook','ex':'"oo" court dans certains mots'},
+  {rule:'TH = θ/ð','en':'think / the','ex':'Langue entre les dents'},
+  {rule:'-ING','en':'running, going','ex':'Terminaison gerondif/présent progressif'},
+  {rule:'-ED = t/d/ɪd','en':'walked/played/wanted','ex':'3 prononciations possibles'},
+  {rule:'Silent K','en':'know, knife, knock','ex':'Le K devant N ne se prononce pas'},
+  {rule:'GH muet','en':'night, light, though','ex':'"gh" souvent muet en milieu/fin'},
+  {rule:'W + R','en':'write, wrong, wrap','ex':'Le W devant R ne se prononce pas'},
+];
+
+// VOCABULARY (250+ words)
+const VOCAB = {
+  'Salutations 👋': [
+    {en:'Hello',ph:'/həˈloʊ/',fr:'Bonjour',em:'👋',lv:'a1'},
+    {en:'Goodbye',ph:'/ˌɡʊdˈbaɪ/',fr:'Au revoir',em:'🙋',lv:'a1'},
+    {en:'Please',ph:'/pliːz/',fr:'S\'il vous plaît',em:'🙏',lv:'a1'},
+    {en:'Thank you',ph:'/ˈθæŋk juː/',fr:'Merci',em:'😊',lv:'a1'},
+    {en:'Sorry',ph:'/ˈsɒri/',fr:'Pardon / Désolé',em:'😔',lv:'a1'},
+    {en:'Welcome',ph:'/ˈwɛlkəm/',fr:'Bienvenue',em:'🤗',lv:'a1'},
+    {en:'Excuse me',ph:'/ɪkˈskjuːz miː/',fr:'Excusez-moi',em:'🤚',lv:'a1'},
+    {en:'Good morning',ph:'/ɡʊd ˈmɔːrnɪŋ/',fr:'Bonjour (matin)',em:'🌅',lv:'a1'},
+    {en:'Good night',ph:'/ɡʊd naɪt/',fr:'Bonne nuit',em:'🌙',lv:'a1'},
+    {en:'See you later',ph:'/siː juː ˈleɪtər/',fr:'À plus tard',em:'👀',lv:'a1'},
+  ],
+  'Famille 👨‍👩‍👧': [
+    {en:'Mother',ph:'/ˈmʌðər/',fr:'Mère',em:'👩',lv:'a1'},
+    {en:'Father',ph:'/ˈfɑːðər/',fr:'Père',em:'👨',lv:'a1'},
+    {en:'Brother',ph:'/ˈbrʌðər/',fr:'Frère',em:'👦',lv:'a1'},
+    {en:'Sister',ph:'/ˈsɪstər/',fr:'Sœur',em:'👧',lv:'a1'},
+    {en:'Son',ph:'/sʌn/',fr:'Fils',em:'🧒',lv:'a1'},
+    {en:'Daughter',ph:'/ˈdɔːtər/',fr:'Fille',em:'👧',lv:'a1'},
+    {en:'Husband',ph:'/ˈhʌzbənd/',fr:'Mari',em:'💍',lv:'a2'},
+    {en:'Wife',ph:'/waɪf/',fr:'Femme (épouse)',em:'💍',lv:'a2'},
+    {en:'Grandparents',ph:'/ˈɡrændˌpɛrənts/',fr:'Grands-parents',em:'👴👵',lv:'a2'},
+    {en:'Uncle',ph:'/ˈʌŋkəl/',fr:'Oncle',em:'🧔',lv:'a2'},
+  ],
+  'Corps 🫀': [
+    {en:'Head',ph:'/hɛd/',fr:'Tête',em:'🗣️',lv:'a1'},
+    {en:'Eye',ph:'/aɪ/',fr:'Œil',em:'👁️',lv:'a1'},
+    {en:'Ear',ph:'/ɪər/',fr:'Oreille',em:'👂',lv:'a1'},
+    {en:'Nose',ph:'/noʊz/',fr:'Nez',em:'👃',lv:'a1'},
+    {en:'Mouth',ph:'/maʊθ/',fr:'Bouche',em:'👄',lv:'a1'},
+    {en:'Hand',ph:'/hænd/',fr:'Main',em:'✋',lv:'a1'},
+    {en:'Foot',ph:'/fʊt/',fr:'Pied',em:'🦶',lv:'a1'},
+    {en:'Heart',ph:'/hɑːrt/',fr:'Cœur',em:'❤️',lv:'a1'},
+    {en:'Shoulder',ph:'/ˈʃoʊldər/',fr:'Épaule',em:'💪',lv:'a2'},
+    {en:'Knee',ph:'/niː/',fr:'Genou',em:'🦵',lv:'a2'},
+  ],
+  'Nourriture 🍲': [
+    {en:'Rice',ph:'/raɪs/',fr:'Riz',em:'🍚',lv:'a1'},
+    {en:'Bread',ph:'/brɛd/',fr:'Pain',em:'🍞',lv:'a1'},
+    {en:'Water',ph:'/ˈwɔːtər/',fr:'Eau',em:'💧',lv:'a1'},
+    {en:'Meat',ph:'/miːt/',fr:'Viande',em:'🥩',lv:'a1'},
+    {en:'Fruit',ph:'/fruːt/',fr:'Fruit',em:'🍎',lv:'a1'},
+    {en:'Vegetable',ph:'/ˈvɛdʒtəbəl/',fr:'Légume',em:'🥦',lv:'a1'},
+    {en:'Chicken',ph:'/ˈtʃɪkɪn/',fr:'Poulet',em:'🍗',lv:'a1'},
+    {en:'Fish',ph:'/fɪʃ/',fr:'Poisson',em:'🐟',lv:'a1'},
+    {en:'Egg',ph:'/ɛɡ/',fr:'Œuf',em:'🥚',lv:'a1'},
+    {en:'Sugar',ph:'/ˈʃʊɡər/',fr:'Sucre',em:'🍬',lv:'a2'},
+  ],
+  'Chiffres 🔢': [
+    {en:'One / 1',ph:'/wʌn/',fr:'Un',em:'1️⃣',lv:'a1'},
+    {en:'Two / 2',ph:'/tuː/',fr:'Deux',em:'2️⃣',lv:'a1'},
+    {en:'Three / 3',ph:'/θriː/',fr:'Trois',em:'3️⃣',lv:'a1'},
+    {en:'Four / 4',ph:'/fɔːr/',fr:'Quatre',em:'4️⃣',lv:'a1'},
+    {en:'Five / 5',ph:'/faɪv/',fr:'Cinq',em:'5️⃣',lv:'a1'},
+    {en:'Ten / 10',ph:'/tɛn/',fr:'Dix',em:'🔟',lv:'a1'},
+    {en:'Twenty / 20',ph:'/ˈtwɛnti/',fr:'Vingt',em:'2️⃣0️⃣',lv:'a1'},
+    {en:'Hundred / 100',ph:'/ˈhʌndrəd/',fr:'Cent',em:'💯',lv:'a2'},
+    {en:'Thousand / 1000',ph:'/ˈθaʊzənd/',fr:'Mille',em:'🔢',lv:'a2'},
+    {en:'Million',ph:'/ˈmɪljən/',fr:'Million',em:'💰',lv:'a2'},
+  ],
+  'Couleurs 🎨': [
+    {en:'Red',ph:'/rɛd/',fr:'Rouge',em:'🔴',lv:'a1'},
+    {en:'Blue',ph:'/bluː/',fr:'Bleu',em:'🔵',lv:'a1'},
+    {en:'Green',ph:'/ɡriːn/',fr:'Vert',em:'🟢',lv:'a1'},
+    {en:'Yellow',ph:'/ˈjɛloʊ/',fr:'Jaune',em:'💛',lv:'a1'},
+    {en:'White',ph:'/waɪt/',fr:'Blanc',em:'⚪',lv:'a1'},
+    {en:'Black',ph:'/blæk/',fr:'Noir',em:'⚫',lv:'a1'},
+    {en:'Orange',ph:'/ˈɔːrɪndʒ/',fr:'Orange',em:'🟠',lv:'a1'},
+    {en:'Purple',ph:'/ˈpɜːrpəl/',fr:'Violet',em:'🟣',lv:'a1'},
+    {en:'Brown',ph:'/braʊn/',fr:'Marron',em:'🟤',lv:'a1'},
+    {en:'Grey',ph:'/ɡreɪ/',fr:'Gris',em:'🔘',lv:'a2'},
+  ],
+  'Tech 💻': [
+    {en:'Computer',ph:'/kəmˈpjuːtər/',fr:'Ordinateur',em:'💻',lv:'a1'},
+    {en:'Software',ph:'/ˈsɒftˌwɛr/',fr:'Logiciel',em:'⚙️',lv:'a2'},
+    {en:'Hardware',ph:'/ˈhɑːrdwɛr/',fr:'Matériel informatique',em:'🖥️',lv:'a2'},
+    {en:'Bug',ph:'/bʌɡ/',fr:'Erreur/Bug',em:'🐛',lv:'a1'},
+    {en:'Database',ph:'/ˈdeɪtəˌbeɪs/',fr:'Base de données',em:'🗄️',lv:'b1'},
+    {en:'Network',ph:'/ˈnɛtˌwɜːrk/',fr:'Réseau',em:'🌐',lv:'a2'},
+    {en:'Algorithm',ph:'/ˈælɡərɪðəm/',fr:'Algorithme',em:'🔄',lv:'b1'},
+    {en:'Framework',ph:'/ˈfreɪmwɜːrk/',fr:'Cadre de travail',em:'🏗️',lv:'b1'},
+    {en:'Deploy',ph:'/dɪˈplɔɪ/',fr:'Déployer',em:'🚀',lv:'b1'},
+    {en:'Repository',ph:'/rɪˈpɒzɪtri/',fr:'Dépôt (Git)',em:'📁',lv:'b2'},
+  ],
+  'Verbes Essentiels ⚡': [
+    {en:'Be',ph:'/biː/',fr:'Être',em:'🔵',lv:'a1'},
+    {en:'Have',ph:'/hæv/',fr:'Avoir',em:'✋',lv:'a1'},
+    {en:'Do',ph:'/duː/',fr:'Faire',em:'🔨',lv:'a1'},
+    {en:'Go',ph:'/ɡoʊ/',fr:'Aller',em:'🏃',lv:'a1'},
+    {en:'Get',ph:'/ɡɛt/',fr:'Obtenir/Devenir',em:'📥',lv:'a1'},
+    {en:'Make',ph:'/meɪk/',fr:'Faire/Créer',em:'⚒️',lv:'a1'},
+    {en:'Know',ph:'/noʊ/',fr:'Savoir/Connaître',em:'🧠',lv:'a1'},
+    {en:'Think',ph:'/θɪŋk/',fr:'Penser',em:'💭',lv:'a1'},
+    {en:'Want',ph:'/wɒnt/',fr:'Vouloir',em:'🎯',lv:'a1'},
+    {en:'Say',ph:'/seɪ/',fr:'Dire',em:'💬',lv:'a1'},
+    {en:'Need',ph:'/niːd/',fr:'Avoir besoin',em:'🆘',lv:'a1'},
+    {en:'Work',ph:'/wɜːrk/',fr:'Travailler',em:'💼',lv:'a1'},
+    {en:'Learn',ph:'/lɜːrn/',fr:'Apprendre',em:'📖',lv:'a1'},
+    {en:'Understand',ph:'/ˌʌndərˈstænd/',fr:'Comprendre',em:'💡',lv:'a2'},
+    {en:'Improve',ph:'/ɪmˈpruːv/',fr:'Améliorer',em:'📈',lv:'b1'},
+  ],
+  'Adjectifs 🎭': [
+    {en:'Good',ph:'/ɡʊd/',fr:'Bon / Bien',em:'👍',lv:'a1'},
+    {en:'Bad',ph:'/bæd/',fr:'Mauvais',em:'👎',lv:'a1'},
+    {en:'Big / Large',ph:'/bɪɡ/',fr:'Grand / Gros',em:'🏔️',lv:'a1'},
+    {en:'Small / Little',ph:'/smɔːl/',fr:'Petit',em:'🐜',lv:'a1'},
+    {en:'Fast / Quick',ph:'/fæst/',fr:'Rapide',em:'⚡',lv:'a1'},
+    {en:'Slow',ph:'/sloʊ/',fr:'Lent',em:'🐢',lv:'a1'},
+    {en:'Easy',ph:'/ˈiːzi/',fr:'Facile',em:'😊',lv:'a1'},
+    {en:'Difficult / Hard',ph:'/ˈdɪfɪkəlt/',fr:'Difficile',em:'😤',lv:'a1'},
+    {en:'Important',ph:'/ɪmˈpɔːrtənt/',fr:'Important',em:'❗',lv:'a2'},
+    {en:'Interesting',ph:'/ˈɪntrəstɪŋ/',fr:'Intéressant',em:'🤔',lv:'a2'},
+    {en:'Beautiful',ph:'/ˈbjuːtɪfəl/',fr:'Beau / Belle',em:'😍',lv:'a2'},
+    {en:'Useful',ph:'/ˈjuːsfəl/',fr:'Utile',em:'🔧',lv:'a2'},
+  ],
+  'Temps & Heure ⏰': [
+    {en:'Today',ph:'/təˈdeɪ/',fr:'Aujourd\'hui',em:'📅',lv:'a1'},
+    {en:'Yesterday',ph:'/ˈjɛstərdeɪ/',fr:'Hier',em:'⬅️',lv:'a1'},
+    {en:'Tomorrow',ph:'/təˈmɒroʊ/',fr:'Demain',em:'➡️',lv:'a1'},
+    {en:'Now',ph:'/naʊ/',fr:'Maintenant',em:'⏱️',lv:'a1'},
+    {en:'Always',ph:'/ˈɔːlweɪz/',fr:'Toujours',em:'♾️',lv:'a1'},
+    {en:'Never',ph:'/ˈnɛvər/',fr:'Jamais',em:'🚫',lv:'a1'},
+    {en:'Sometimes',ph:'/ˈsʌmtaɪmz/',fr:'Parfois',em:'🔄',lv:'a2'},
+    {en:'Morning',ph:'/ˈmɔːrnɪŋ/',fr:'Matin',em:'🌅',lv:'a1'},
+    {en:'Evening',ph:'/ˈiːvnɪŋ/',fr:'Soir',em:'🌆',lv:'a1'},
+    {en:'Week',ph:'/wiːk/',fr:'Semaine',em:'📆',lv:'a1'},
+  ],
+};
+
+// GRAMMAR
+const GRAMMAR = {
+  'Présent Simple': {
+    desc: 'Faits, habitudes, vérités générales',
+    color: 'var(--teal)',
+    rules: [
+      {fr:'Je parle',en:'I speak',note:'Verbe base'},
+      {fr:'Tu/Il parle(s)',en:'He/She speaks',note:'+ "s" à la 3e pers. sing.'},
+      {fr:'Négatif',en:"I don't speak / He doesn't speak",note:'do not / does not'},
+      {fr:'Question',en:'Do you speak? / Does he speak?',note:'Do / Does en tête'},
+    ],
+    examples: [
+      'I work at a university.',
+      'She studies software engineering.',
+      'Do you speak English?',
+      'He doesn\'t understand the question.',
+    ]
+  },
+  'Présent Progressif': {
+    desc: 'Action en cours au moment où l\'on parle',
+    color: 'var(--gold)',
+    rules: [
+      {fr:'Je suis en train de parler',en:'I am speaking',note:'am/is/are + V-ing'},
+      {fr:'Négatif',en:"I'm not speaking",note:'am not / is not / are not'},
+      {fr:'Question',en:'Are you speaking?',note:'Am/Is/Are en tête'},
+    ],
+    examples: [
+      'I am studying English right now.',
+      'She is writing her code.',
+      'They are building an app.',
+    ]
+  },
+  'Passé Simple': {
+    desc: 'Action terminée dans le passé',
+    color: 'var(--lavender)',
+    rules: [
+      {fr:'Je parlai / parlais',en:'I spoke / I worked',note:'Verbe irrégulier ou + -ed'},
+      {fr:'Négatif',en:"I didn't speak",note:'did not + verbe base'},
+      {fr:'Question',en:'Did you speak?',note:'Did + verbe base'},
+    ],
+    examples: [
+      'I studied last night.',
+      'She didn\'t go to class yesterday.',
+      'Did you finish the project?',
+    ]
+  },
+  'Passé Progressif': {
+    desc: 'Action en cours à un moment du passé',
+    color: 'var(--coral)',
+    rules: [
+      {fr:'J\'étais en train de parler',en:'I was speaking',note:'was/were + V-ing'},
+      {fr:'Négatif',en:"I wasn't speaking",note:'was not / were not'},
+      {fr:'Question',en:'Were you speaking?',note:'Was/Were en tête'},
+    ],
+    examples: [
+      'I was coding when the power went out.',
+      'They were sleeping at midnight.',
+    ]
+  },
+  'Présent Parfait': {
+    desc: 'Action passée liée au présent, expérience de vie',
+    color: 'var(--green)',
+    rules: [
+      {fr:'J\'ai parlé / Je viens de parler',en:"I have spoken / I've spoken",note:'have/has + participe passé'},
+      {fr:'Négatif',en:"I haven't spoken",note:'have not / has not'},
+      {fr:'Question',en:'Have you spoken?',note:'Have/Has en tête'},
+    ],
+    examples: [
+      'I have already finished the homework.',
+      'She has never visited London.',
+      'Have you ever eaten sushi?',
+    ]
+  },
+  'Futur (Will)': {
+    desc: 'Décisions spontanées, prédictions, promesses',
+    color: 'var(--blue)',
+    rules: [
+      {fr:'Je parlerai',en:"I will speak / I'll speak",note:'will + verbe base'},
+      {fr:'Négatif',en:"I won't speak",note:'will not'},
+      {fr:'Question',en:'Will you speak?',note:'Will en tête'},
+    ],
+    examples: [
+      'I will help you with that.',
+      'It will rain tomorrow.',
+      'She will not be late.',
+    ]
+  },
+  'Futur (Going to)': {
+    desc: 'Plans décidés, intentions, futur évident',
+    color: 'var(--teal)',
+    rules: [
+      {fr:'Je vais parler',en:"I'm going to speak",note:'am/is/are going to + base'},
+      {fr:'Négatif',en:"I'm not going to speak",note:'not going to'},
+      {fr:'Question',en:'Are you going to speak?',note:'are/is/am en tête'},
+    ],
+    examples: [
+      'I am going to learn Python this year.',
+      'She is going to graduate in June.',
+    ]
+  },
+  'Conditionnel': {
+    desc: 'Situations hypothétiques',
+    color: 'var(--gold)',
+    rules: [
+      {fr:'Type 1 (réel)',en:'If it rains, I will stay home.',note:'If + présent, will + base'},
+      {fr:'Type 2 (hypothétique)',en:"If I were rich, I would travel.",note:'If + past, would + base'},
+      {fr:'Type 3 (regret)',en:"If I had studied, I would have passed.",note:'If + past perfect, would have + pp'},
+    ],
+    examples: [
+      "If I study hard, I'll pass the exam.",
+      "If I were you, I would accept the offer.",
+    ]
+  },
+  'Passif': {
+    desc: 'Mettre l\'accent sur l\'action, pas l\'auteur',
+    color: 'var(--lavender)',
+    rules: [
+      {fr:'Présent passif',en:'The code is written by me.',note:'is/are + participe passé'},
+      {fr:'Passé passif',en:'The bug was fixed.',note:'was/were + participe passé'},
+      {fr:'Futur passif',en:'The app will be deployed.',note:'will be + participe passé'},
+    ],
+    examples: [
+      'English is spoken worldwide.',
+      'The database was updated yesterday.',
+    ]
+  },
+  'Verbes Irréguliers': {
+    desc: 'Les 50 verbes irréguliers les plus courants',
+    color: 'var(--coral)',
+    irregular: [
+      {base:'be',past:'was/were',pp:'been',fr:'être'},
+      {base:'have',past:'had',pp:'had',fr:'avoir'},
+      {base:'do',past:'did',pp:'done',fr:'faire'},
+      {base:'go',past:'went',pp:'gone',fr:'aller'},
+      {base:'get',past:'got',pp:'gotten',fr:'obtenir'},
+      {base:'make',past:'made',pp:'made',fr:'faire/créer'},
+      {base:'know',past:'knew',pp:'known',fr:'savoir'},
+      {base:'think',past:'thought',pp:'thought',fr:'penser'},
+      {base:'come',past:'came',pp:'come',fr:'venir'},
+      {base:'see',past:'saw',pp:'seen',fr:'voir'},
+      {base:'take',past:'took',pp:'taken',fr:'prendre'},
+      {base:'give',past:'gave',pp:'given',fr:'donner'},
+      {base:'find',past:'found',pp:'found',fr:'trouver'},
+      {base:'tell',past:'told',pp:'told',fr:'dire/raconter'},
+      {base:'write',past:'wrote',pp:'written',fr:'écrire'},
+      {base:'read',past:'read',pp:'read',fr:'lire'},
+      {base:'speak',past:'spoke',pp:'spoken',fr:'parler'},
+      {base:'run',past:'ran',pp:'run',fr:'courir'},
+      {base:'buy',past:'bought',pp:'bought',fr:'acheter'},
+      {base:'put',past:'put',pp:'put',fr:'mettre'},
+      {base:'bring',past:'brought',pp:'brought',fr:'apporter'},
+      {base:'begin',past:'began',pp:'begun',fr:'commencer'},
+      {base:'break',past:'broke',pp:'broken',fr:'casser'},
+      {base:'build',past:'built',pp:'built',fr:'construire'},
+      {base:'choose',past:'chose',pp:'chosen',fr:'choisir'},
+    ]
+  },
+};
+
+// PHRASES
+const PHRASES = {
+  'Se présenter 👤': [
+    {en:"My name is Sultan. I'm from Burkina Faso.",fr:"Je m'appelle Sultan. Je suis du Burkina Faso.",ctx:'Présentation'},
+    {en:"I'm a first-year software engineering student.",fr:"Je suis étudiant en première année de génie logiciel.",ctx:'Études'},
+    {en:'Nice to meet you! / Pleased to meet you!',fr:'Enchanté(e) !',ctx:'Première rencontre'},
+    {en:"What do you do for a living?",fr:"Que faites-vous dans la vie ?",ctx:'Question'},
+    {en:"I study and I'm also working on my own projects.",fr:"J'étudie et je travaille aussi sur mes propres projets.",ctx:'Réponse détaillée'},
+    {en:"How long have you been learning English?",fr:"Depuis combien de temps apprenez-vous l'anglais ?",ctx:'Question sur l\'apprentissage'},
+  ],
+  'Demander de l\'aide 🆘': [
+    {en:"Could you help me, please?",fr:"Pourriez-vous m'aider, s'il vous plaît ?",ctx:'Poli/formel'},
+    {en:"I'm sorry, I don't understand.",fr:"Je suis désolé, je ne comprends pas.",ctx:'Incompréhension'},
+    {en:"Could you repeat that more slowly, please?",fr:"Pourriez-vous répéter plus lentement, s'il vous plaît ?",ctx:'Clarification'},
+    {en:"How do you spell that?",fr:"Comment ça s'épelle ?",ctx:'Orthographe'},
+    {en:"What does '...' mean?",fr:"Que signifie '...' ?",ctx:'Définition'},
+    {en:"Can you give me an example?",fr:"Pouvez-vous me donner un exemple ?",ctx:'Explication'},
+    {en:"I beg your pardon?",fr:"Pardon ? (Je n'ai pas entendu)",ctx:'Politesse formelle'},
+  ],
+  'Au travail/études 📚': [
+    {en:"I have a deadline tomorrow.",fr:"J'ai une date limite demain.",ctx:'Pression'},
+    {en:"Let's schedule a meeting.",fr:"Planifions une réunion.",ctx:'Organisation'},
+    {en:"I'll send you the file by email.",fr:"Je vous enverrai le fichier par email.",ctx:'Communication'},
+    {en:"Could you review my work?",fr:"Pourriez-vous examiner mon travail ?",ctx:'Demande de retour'},
+    {en:"I'm running behind schedule.",fr:"Je suis en retard sur le planning.",ctx:'Retard'},
+    {en:"That's a great idea!",fr:"C'est une excellente idée !",ctx:'Approbation'},
+    {en:"I'm not sure about this approach.",fr:"Je ne suis pas sûr de cette approche.",ctx:'Doute'},
+  ],
+  'Tech &amp; Code 💻': [
+    {en:"There's a bug in the code.",fr:"Il y a un bug dans le code.",ctx:'Débogage'},
+    {en:"I need to refactor this function.",fr:"Je dois remanier cette fonction.",ctx:'Qualité du code'},
+    {en:"Let me push the changes to the repo.",fr:"Laisse-moi envoyer les modifications au dépôt.",ctx:'Git'},
+    {en:"The API is returning a 404 error.",fr:"L'API renvoie une erreur 404.",ctx:'Debug API'},
+    {en:"We need to optimize the database query.",fr:"Nous devons optimiser la requête de base de données.",ctx:'Performance'},
+    {en:"The server is down. I'm investigating.",fr:"Le serveur est en panne. J'enquête.",ctx:'Incident'},
+    {en:"Can you review my pull request?",fr:"Peux-tu examiner ma pull request ?",ctx:'Code review'},
+    {en:"I'm getting a null pointer exception.",fr:"J'obtiens une exception de pointeur nul.",ctx:'Erreur'},
+  ],
+  'Opinions 💭': [
+    {en:"In my opinion, ...",fr:"À mon avis, ...",ctx:'Opinion'},
+    {en:"I strongly believe that ...",fr:"Je crois fermement que ...",ctx:'Conviction'},
+    {en:"I'm not convinced that ...",fr:"Je ne suis pas convaincu que ...",ctx:'Doute'},
+    {en:"That's a valid point.",fr:"C'est un point valide.",ctx:'Accord partiel'},
+    {en:"I see your point, but ...",fr:"Je comprends votre point, mais ...",ctx:'Désaccord poli'},
+    {en:"It depends on the situation.",fr:"Cela dépend de la situation.",ctx:'Nuance'},
+    {en:"Could you elaborate on that?",fr:"Pourriez-vous développer ce point ?",ctx:'Approfondissement'},
+  ],
+  'Urgences &amp; Problèmes 🚨': [
+    {en:"Help! / Call an ambulance!",fr:"Au secours ! / Appelez une ambulance !",ctx:'Urgence'},
+    {en:"I've lost my phone.",fr:"J'ai perdu mon téléphone.",ctx:'Objet perdu'},
+    {en:"I don't feel well.",fr:"Je ne me sens pas bien.",ctx:'Santé'},
+    {en:"Where is the nearest hospital?",fr:"Où est l'hôpital le plus proche ?",ctx:'Direction'},
+    {en:"I need a doctor.",fr:"J'ai besoin d'un médecin.",ctx:'Médical'},
+    {en:"My internet isn't working.",fr:"Mon internet ne fonctionne pas.",ctx:'Tech quotidien'},
+  ],
+};
+
+// IDIOMS
+const IDIOMS = [
+  {ph:'Break a leg!',fr:'Bonne chance !',ex:"You're presenting today? Break a leg!",lit:'Casse-toi une jambe ! (sens littéral absurde)'},
+  {ph:'Hit the nail on the head',fr:'Mettre le doigt dessus / Toucher juste',ex:'Your analysis hits the nail on the head.',lit:'Frapper le clou sur la tête'},
+  {ph:'Bite the bullet',fr:'Serrer les dents / Avaler la pilule',ex:"I hate debugging but I'll bite the bullet.",lit:'Mordre la balle'},
+  {ph:'Under the weather',fr:'Patraque / Pas dans son assiette',ex:"I can't come in — I'm under the weather.",lit:'Sous le temps'},
+  {ph:'Back to square one',fr:'Revenir à la case départ',ex:"The app crashed. We're back to square one.",lit:'Retour à la case 1'},
+  {ph:"It's not rocket science",fr:"Ce n'est pas sorcier",ex:"HTML is not rocket science, just practice!",lit:"Ce n'est pas la science des fusées"},
+  {ph:'On the same page',fr:'Être sur la même longueur d\'onde',ex:"Let's make sure we're on the same page.",lit:'Sur la même page'},
+  {ph:'Think outside the box',fr:'Penser différemment / Sortir des sentiers battus',ex:"We need to think outside the box for this.",lit:'Penser en dehors de la boîte'},
+  {ph:'Burn the midnight oil',fr:'Travailler jusqu\'à tard dans la nuit',ex:"I burned the midnight oil to finish the project.",lit:'Brûler l\'huile de minuit'},
+  {ph:'Cost an arm and a leg',fr:'Coûter les yeux de la tête',ex:"The new MacBook costs an arm and a leg.",lit:'Coûter un bras et une jambe'},
+  {ph:'Hit the books',fr:'Potasser / Ouvrir ses livres',ex:"Exams next week — time to hit the books!",lit:'Frapper les livres'},
+  {ph:"Bite off more than you can chew",fr:'Voir trop grand / Ne pas mâcher ce qu\'on peut avaler',ex:"Don't bite off more than you can chew with 5 projects.",lit:'Mordre plus qu\'on ne peut mâcher'},
+  {ph:'The ball is in your court',fr:'C\'est à toi de jouer',ex:"I've given you the offer. The ball is in your court.",lit:'La balle est dans ton camp'},
+  {ph:'Cut corners',fr:'Faire les choses à la va-vite / Prendre des raccourcis',ex:"Don't cut corners on security.",lit:'Couper les coins'},
+  {ph:'Get the hang of it',fr:'Attraper le coup / Comprendre comment ça marche',ex:"Git is confusing at first, but you'll get the hang of it.",lit:'Attraper la façon de faire'},
+  {ph:'Pull someone\'s leg',fr:'Faire marcher quelqu\'un / Plaisanter',ex:"Are you serious or are you pulling my leg?",lit:'Tirer la jambe de quelqu\'un'},
+  {ph:'Speak of the devil',fr:'Quand on parle du loup',ex:"Speak of the devil — here comes Ahmed!",lit:'Parler du diable'},
+  {ph:'Once in a blue moon',fr:'Une fois tous les 36 du mois',ex:"I eat fast food once in a blue moon.",lit:'Une fois sous une lune bleue'},
+  {ph:'Easier said than done',fr:'Plus facile à dire qu\'à faire',ex:"Learning English is easier said than done.",lit:'Plus facilement dit que fait'},
+  {ph:'Kill two birds with one stone',fr:'Faire d\'une pierre deux coups',ex:"By coding this, I kill two birds with one stone.",lit:'Tuer deux oiseaux avec une pierre'},
+];
+
+// FALSE FRIENDS
+const FALSE_FRIENDS = [
+  {word:'Actual',wrong:'Actuel',right:'Réel / Véritable',ex:"The actual problem is the algorithm."},
+  {word:'Library',wrong:'Librairie',right:'Bibliothèque',ex:"I borrowed it from the library."},
+  {word:'Sensible',wrong:'Sensible',right:'Raisonnable / Sage',ex:"That's a sensible decision."},
+  {word:'Sensitive',wrong:'Sensitif',right:'Sensible (émotions)',ex:"She is very sensitive to criticism."},
+  {word:'Sympathetic',wrong:'Sympathique',right:'Compatissant / Empathique',ex:"He was very sympathetic when I failed."},
+  {word:'Chance',wrong:'Chance (bonne)',right:'Occasion / Probabilité',ex:"There's a chance it will work."},
+  {word:'Conference',wrong:'Conférence (discours)',right:'Réunion / Congrès',ex:"We have a conference call at 3pm."},
+  {word:'Eventually',wrong:'Éventuellement',right:'Finalement / Un jour',ex:"He eventually learned to code."},
+  {word:'Ignore',wrong:'Ignorer (ne pas savoir)',right:'Ignorer (volontairement)',ex:"Don't ignore the error messages."},
+  {word:'Pretend',wrong:'Prétendre (affirmer)',right:'Faire semblant',ex:"He pretended to understand."},
+  {word:'Lecture',wrong:'Lecture',right:'Cours magistral / Conférence',ex:"The professor gave a lecture on AI."},
+  {word:'Gentle',wrong:'Gentil',right:'Doux / Délicat',ex:"Be gentle with the users."},
+  {word:'Demand',wrong:'Demander (poliment)',right:'Exiger',ex:"The client demanded a refund."},
+  {word:'Resume',wrong:'Résumer',right:'Reprendre / CV (noun)',ex:"We'll resume the meeting after lunch."},
+  {word:'Assist',wrong:'Assister (être présent)',right:'Aider',ex:"Can you assist me with this task?"},
+  {word:'Inconvenient',wrong:'Inconvénient (noun)',right:'Pas pratique (adj)',ex:"Is Tuesday inconvenient for you?"},
+];
+
+// QUIZ DATA
+const QUIZ_QUESTIONS = [
+  {q:'Bonjour',hint:'"Bonjour" en anglais',opts:['Goodbye','Hello','Please','Sorry'],ans:'Hello',cat:'vocab'},
+  {q:'Thank you',hint:'Que signifie "Thank you" ?',opts:['Pardon','Au revoir','Merci','S\'il vous plaît'],ans:'Merci',cat:'vocab'},
+  {q:'Apprendre',hint:'"Apprendre" en anglais',opts:['Work','Go','Learn','Make'],ans:'Learn',cat:'vocab'},
+  {q:'I ___ a student.',hint:'Verbe "être" au présent',opts:['am','is','are','be'],ans:'am',cat:'grammar'},
+  {q:'She ___ English every day.',hint:'Présent simple, 3e personne',opts:['study','studies','studying','studied'],ans:'studies',cat:'grammar'},
+  {q:'We ___ the project yesterday.',hint:'Passé simple de "finish"',opts:['finish','finishing','finished','have finished'],ans:'finished',cat:'grammar'},
+  {q:'Computer',hint:'"Computer" en français',opts:['Réseau','Logiciel','Clavier','Ordinateur'],ans:'Ordinateur',cat:'vocab'},
+  {q:'Break a leg!',hint:'Que signifie cette expression ?',opts:['Se casser la jambe','Bonne chance','Au revoir','Être fatigué'],ans:'Bonne chance',cat:'idiom'},
+  {q:'___ you ever been to Paris?',hint:'Présent parfait, question',opts:['Did','Do','Have','Are'],ans:'Have',cat:'grammar'},
+  {q:'If I ___ rich, I would travel.',hint:'Conditionnel type 2',opts:['am','was','were','be'],ans:'were',cat:'grammar'},
+  {q:'Library',hint:'Faux ami — "Library" en français',opts:['Librairie','Bibliothèque','Lecteur','Livre'],ans:'Bibliothèque',cat:'falsefriend'},
+  {q:'The code is ___ by the team.',hint:'Forme passive, présent',opts:['write','writing','written','wrote'],ans:'written',cat:'grammar'},
+  {q:'Under the weather',hint:'Que signifie cette expression ?',opts:['Il fait mauvais','Pas dans son assiette','À l\'extérieur','Sous pression'],ans:'Pas dans son assiette',cat:'idiom'},
+  {q:'Algorithm',hint:'"Algorithm" en français',opts:['Algèbre','Algorithme','Programme','Logique'],ans:'Algorithme',cat:'vocab'},
+  {q:'I ___ studying when you called.',hint:'Passé progressif',opts:['was','were','am','had'],ans:'was',cat:'grammar'},
+  {q:'Actual',hint:'Faux ami — "Actual" en français',opts:['Actuel','Réel','Actif','Présent'],ans:'Réel',cat:'falsefriend'},
+  {q:'Eventually',hint:'Faux ami — "Eventually"',opts:['Éventuellement','Finalement','Jamais','Souvent'],ans:'Finalement',cat:'falsefriend'},
+  {q:'She ___ never eaten sushi.',hint:'Présent parfait négatif',opts:['did','has','have','does'],ans:'has',cat:'grammar'},
+  {q:'I ___ go to the store later.',hint:'Futur will',opts:['am','do','will','going'],ans:'will',cat:'grammar'},
+  {q:'Network',hint:'"Network" en français',opts:['Travail','Réseau','Internet','Câble'],ans:'Réseau',cat:'vocab'},
+];
+
+// FILL IN BLANK
+const FIB_DATA = [
+  {sent:"I ___ a software engineering student.",blank:'am',opts:['am','is','are','be'],fr:"Je suis étudiant en génie logiciel."},
+  {sent:"She ___ English every day.",blank:'speaks',opts:['speak','speaks','spoke','speaking'],fr:"Elle parle anglais tous les jours."},
+  {sent:"We ___ the project last week.",blank:'finished',opts:['finish','finishing','finished','will finish'],fr:"Nous avons terminé le projet la semaine dernière."},
+  {sent:"___ you speak French?",blank:'Can',opts:['Can','Do','Are','Did'],fr:"Parlez-vous français ?"},
+  {sent:"I have never ___ to London.",blank:'been',opts:['go','went','been','going'],fr:"Je ne suis jamais allé à Londres."},
+  {sent:"The app ___ deployed yesterday.",blank:'was',opts:['is','was','were','be'],fr:"L'application a été déployée hier."},
+  {sent:"If it rains, I ___ stay home.",blank:'will',opts:['will','would','could','am'],fr:"S'il pleut, je resterai à la maison."},
+  {sent:"She is ___ on a new project.",blank:'working',opts:['work','worked','working','works'],fr:"Elle travaille sur un nouveau projet."},
+  {sent:"I ___ rather study than watch TV.",blank:'would',opts:['will','would','could','should'],fr:"Je préférerais étudier que regarder la télé."},
+  {sent:"There ___ many bugs in the code.",blank:'are',opts:['is','are','am','be'],fr:"Il y a beaucoup de bugs dans le code."},
+  {sent:"He ___ already fixed the bug.",blank:'has',opts:['have','has','had','is'],fr:"Il a déjà corrigé le bug."},
+  {sent:"I wish I ___ more time.",blank:'had',opts:['have','had','has','would have'],fr:"Je voudrais avoir plus de temps."},
+];
+
+// WORD ORDER
+const WORD_ORDER_DATA = [
+  {fr:"Je parle anglais tous les jours.",words:['I','speak','English','every','day','.']},
+  {fr:"Elle ne comprend pas la question.",words:["She","doesn't","understand","the","question","."]},
+  {fr:"As-tu jamais visité Paris ?",words:['Have','you','ever','visited','Paris','?']},
+  {fr:"Le code a été écrit par mon équipe.",words:['The','code','was','written','by','my','team','.']},
+  {fr:"J'apprends l'anglais depuis six mois.",words:["I've","been","learning","English","for","six","months","."]},
+  {fr:"Si je travaille dur, je réussirai.",words:['If','I','work','hard,','I','will','succeed','.']},
+  {fr:"Elle travaillait quand le téléphone a sonné.",words:['She','was','working','when','the','phone','rang','.']},
+  {fr:"Je vais déployer l'application demain.",words:["I'm","going","to","deploy","the","app","tomorrow","."]},
+  {fr:"Puis-je t'aider avec ça ?",words:['Can','I','help','you','with','that','?']},
+  {fr:"Il faut que tu étudies chaque jour.",words:['You','need','to','study','every','day','.']},
+];
+
+// DICTATION
+const DICTATION_DATA = [
+  {text:"Hello, my name is Sultan.",level:'A1'},
+  {text:"I am a software engineering student.",level:'A1'},
+  {text:"Can you help me, please?",level:'A1'},
+  {text:"She studies English every day.",level:'A2'},
+  {text:"I have been learning English for six months.",level:'B1'},
+  {text:"The code was written by the development team.",level:'B1'},
+  {text:"If you study hard, you will improve quickly.",level:'B1'},
+  {text:"I was working when the server went down.",level:'B2'},
+  {text:"Have you ever considered learning a programming language?",level:'B2'},
+  {text:"The algorithm needs to be optimized for better performance.",level:'C1'},
+  {text:"She has already submitted the pull request for review.",level:'B2'},
+  {text:"Despite the challenges, they managed to deploy the application on time.",level:'C1'},
+];
+
+// DIALOGUES
+const DIALOGUES = {
+  'Se présenter 👋': [
+    {side:'left',who:'👤',en:'Hi! My name is Alex. Nice to meet you!',fr:'Salut ! Je m\'appelle Alex. Enchanté !'},
+    {side:'right',who:'🧑🏾',en:"Hello Alex! I'm Sultan. Nice to meet you too!",fr:"Bonjour Alex ! Je suis Sultan. Enchanté aussi !"},
+    {side:'left',who:'👤',en:'Where are you from, Sultan?',fr:'D\'où viens-tu, Sultan ?'},
+    {side:'right',who:'🧑🏾',en:"I'm from Burkina Faso, in West Africa. And you?",fr:"Je viens du Burkina Faso, en Afrique de l'Ouest. Et toi ?"},
+    {side:'left',who:'👤',en:"I'm from the UK. What do you do?",fr:'Je suis du Royaume-Uni. Que fais-tu ?'},
+    {side:'right',who:'🧑🏾',en:"I'm studying software engineering at university. I want to build useful apps for Africa.",fr:"J'étudie le génie logiciel à l'université. Je veux construire des applications utiles pour l'Afrique."},
+    {side:'left',who:'👤',en:"That's amazing! Your English is really good!",fr:"C'est formidable ! Ton anglais est vraiment bon !"},
+    {side:'right',who:'🧑🏾',en:"Thank you! I'm still learning. I practice every day.",fr:"Merci ! J'apprends encore. Je pratique tous les jours."},
+  ],
+  'Entretien tech 💼': [
+    {side:'left',who:'👨‍💼',en:"Good morning! Please have a seat. Tell me about yourself.",fr:"Bonjour ! Asseyez-vous, je vous prie. Parlez-moi de vous."},
+    {side:'right',who:'🧑🏾',en:"Good morning! I'm Sultan, a software engineering student. I'm passionate about backend development and databases.",fr:"Bonjour ! Je suis Sultan, étudiant en génie logiciel. Je suis passionné par le développement backend et les bases de données."},
+    {side:'left',who:'👨‍💼',en:"What programming languages do you know?",fr:"Quels langages de programmation connaissez-vous ?"},
+    {side:'right',who:'🧑🏾',en:"I'm proficient in JavaScript and Node.js, and I'm learning Flutter for mobile development.",fr:"Je maîtrise JavaScript et Node.js, et j'apprends Flutter pour le développement mobile."},
+    {side:'left',who:'👨‍💼',en:"Have you worked on any projects?",fr:"Avez-vous travaillé sur des projets ?"},
+    {side:'right',who:'🧑🏾',en:"Yes! I'm building ParkCampus, a parking management system for my university campus.",fr:"Oui ! Je construis ParkCampus, un système de gestion de parking pour le campus de mon université."},
+    {side:'left',who:'👨‍💼',en:"Impressive! Why do you want to work with us?",fr:"Impressionnant ! Pourquoi souhaitez-vous travailler avec nous ?"},
+    {side:'right',who:'🧑🏾',en:"Your company solves real problems with technology. That aligns perfectly with my goals.",fr:"Votre entreprise résout de vrais problèmes avec la technologie. C'est parfaitement aligné avec mes objectifs."},
+  ],
+  'En cours de tech 💻': [
+    {side:'right',who:'🧑🏾',en:"Professor, I have a question about REST APIs.",fr:"Professeur, j'ai une question sur les APIs REST."},
+    {side:'left',who:'👨‍🏫',en:"Of course! What would you like to know?",fr:"Bien sûr ! Qu'est-ce que vous aimeriez savoir ?"},
+    {side:'right',who:'🧑🏾',en:"What's the difference between GET and POST requests?",fr:"Quelle est la différence entre les requêtes GET et POST ?"},
+    {side:'left',who:'👨‍🏫',en:"Great question! GET retrieves data, while POST sends data to create or update a resource.",fr:"Excellente question ! GET récupère des données, tandis que POST envoie des données pour créer ou mettre à jour une ressource."},
+    {side:'right',who:'🧑🏾',en:"I see. So GET is for reading and POST is for writing?",fr:"Je comprends. Donc GET est pour lire et POST est pour écrire ?"},
+    {side:'left',who:'👨‍🏫',en:"Exactly! You've got it. Keep up the good work, Sultan.",fr:"Exactement ! Vous avez compris. Continuez comme ça, Sultan."},
+  ],
+  'Chez le médecin 🏥': [
+    {side:'left',who:'👨‍⚕️',en:"Good afternoon! What seems to be the problem?",fr:"Bonjour ! Quel est votre problème ?"},
+    {side:'right',who:'🧑🏾',en:"I haven't been feeling well. I have a headache and a sore throat.",fr:"Je ne me sens pas bien. J'ai mal à la tête et à la gorge."},
+    {side:'left',who:'👨‍⚕️',en:"How long have you had these symptoms?",fr:"Depuis combien de temps avez-vous ces symptômes ?"},
+    {side:'right',who:'🧑🏾',en:"Since yesterday morning. I also feel very tired.",fr:"Depuis hier matin. Je me sens aussi très fatigué."},
+    {side:'left',who:'👨‍⚕️',en:"I'll prescribe some medication. Rest and drink plenty of water.",fr:"Je vais vous prescrire des médicaments. Reposez-vous et buvez beaucoup d'eau."},
+    {side:'right',who:'🧑🏾',en:"Thank you, doctor. How long before I feel better?",fr:"Merci, docteur. Combien de temps avant de me sentir mieux ?"},
+    {side:'left',who:'👨‍⚕️',en:"In two or three days with the medication. Come back if it gets worse.",fr:"Dans deux ou trois jours avec les médicaments. Revenez si ça empire."},
+  ],
+};
+
+// PROVERBS
+const PROVERBS = [
+  {en:"Practice makes perfect.",fr:"C'est en forgeant qu'on devient forgeron.",meaning:"Plus tu pratiques, meilleur tu deviens."},
+  {en:"Every cloud has a silver lining.",fr:"À quelque chose malheur est bon.",meaning:"Il y a toujours quelque chose de positif dans une situation négative."},
+  {en:"Actions speak louder than words.",fr:"Les actes valent plus que les paroles.",meaning:"Ce qu'on fait compte plus que ce qu'on dit."},
+  {en:"Don't judge a book by its cover.",fr:"Il ne faut pas se fier aux apparences.",meaning:"Ne juge pas quelque chose sur son apparence extérieure."},
+  {en:"Better late than never.",fr:"Mieux vaut tard que jamais.",meaning:"Il vaut mieux faire quelque chose en retard que ne pas le faire du tout."},
+  {en:"Where there's a will, there's a way.",fr:"Vouloir, c'est pouvoir.",meaning:"Si on est déterminé, on peut tout accomplir."},
+  {en:"The early bird catches the worm.",fr:"L'avenir appartient à ceux qui se lèvent tôt.",meaning:"Ceux qui commencent tôt ont plus de succès."},
+  {en:"Two heads are better than one.",fr:"Deux têtes valent mieux qu'une.",meaning:"La collaboration donne de meilleurs résultats."},
+  {en:"You can't have your cake and eat it too.",fr:"On ne peut pas avoir le beurre et l'argent du beurre.",meaning:"On ne peut pas tout avoir en même temps."},
+  {en:"When in Rome, do as the Romans do.",fr:"Quand on est à Rome, on fait comme les Romains.",meaning:"Adapte-toi aux coutumes du lieu où tu te trouves."},
+  {en:"Knowledge is power.",fr:"Le savoir, c'est le pouvoir.",meaning:"Plus tu sais, plus tu es puissant."},
+  {en:"Time is money.",fr:"Le temps, c'est de l'argent.",meaning:"Ne gaspille pas ton temps car il a de la valeur."},
+  {en:"No pain, no gain.",fr:"Pas de douleur, pas de résultat.",meaning:"Il faut travailler dur pour obtenir des résultats."},
+  {en:"Don't bite off more than you can chew.",fr:"Ne vois pas trop grand.",meaning:"Ne prends pas plus de responsabilités que tu ne peux en gérer."},
+  {en:"Honesty is the best policy.",fr:"L'honnêteté est la meilleure politique.",meaning:"Il vaut toujours mieux être honnête."},
+];
+
+// TIPS
+const TIPS = [
+  {ico:'🎵',title:'La méthode immersive quotidienne',text:'Écoute de l\'anglais 30 min/jour : podcasts, musique, YouTube. Ton cerveau s\'habitue aux sons même passivement. Recommandé : BBC Learning English, EnglishPod, TED-Ed.'},
+  {ico:'📺',title:'Sous-titres en 3 étapes',text:'1) Regarde avec sous-titres français. 2) Regarde le même épisode avec sous-titres anglais. 3) Regarde sans sous-titres. Cette progression force ton cerveau à s\'adapter progressivement.'},
+  {ico:'✍️',title:'Journal d\'apprentissage en anglais',text:'Écris 5-10 phrases en anglais chaque soir sur ta journée. "Today I learned...", "I struggled with...". L\'erreur est un outil d\'apprentissage. Ne te corrige pas tout de suite — libère-toi d\'abord.'},
+  {ico:'🔁',title:'La répétition espacée (Spaced Repetition)',text:'Révise un mot J+1, J+3, J+7, J+30. Utilise Anki (gratuit) pour automatiser ça. C\'est la méthode la plus efficace scientifiquement prouvée pour mémoriser du vocabulaire à long terme.'},
+  {ico:'🗣️',title:'Parle à voix haute chaque jour',text:'Lis les dialogues de cette app à voix haute. Répète après chaque prononciation. Si tu n\'as personne avec qui parler, parle à toi-même. Explique ton code en anglais quand tu programmes !'},
+  {ico:'💻',title:'Code en anglais dès maintenant',text:'Tous tes noms de variables, commentaires, commits Git — en anglais ! "user_name" pas "nom_utilisateur". Tu apprends la langue ET le vocabulaire professionnel en même temps.'},
+  {ico:'📖',title:'Lis la documentation technique',text:'Commence par lire la doc de Node.js, MDN, Stack Overflow en anglais. Ne traduis pas tout — essaie de comprendre le contexte. Le vocabulaire technique se répète et tu le mémoriseras naturellement.'},
+  {ico:'🎯',title:'Objectif SMART en anglais',text:'Pas juste "je veux apprendre l\'anglais". Mais : "Dans 90 jours, je peux regarder une vidéo YouTube technique en anglais sans sous-titres". Un objectif précis = une motivation concrète.'},
+  {ico:'🤝',title:'Trouve un partenaire de pratique',text:'Un language partner sur Tandem, HelloTalk ou Discord. Un francophone qui apprend l\'anglais avec un anglophone qui apprend le français. 30 min d\'échange par semaine = progrès massifs.'},
+  {ico:'🧠',title:'La méthode de l\'input compréhensible (i+1)',text:'Linguiste Stephen Krashen : expose-toi à du contenu légèrement au-dessus de ton niveau (i+1). Pas trop facile (ennuyeux), pas trop difficile (décourageant). Netflix avec sous-titres anglais = parfait.'},
+  {ico:'⏰',title:'15 minutes de qualité > 2h de mauvaise qualité',text:'Régularité > Intensité. 15 min concentré chaque matin pendant 6 mois = transformation totale. Crée un rituel : café du matin + 1 leçon d\'anglais. Irrégulier et intense = peu de résultats.'},
+  {ico:'🎮',title:'Rends l\'apprentissage ludique',text:'Change la langue de ton téléphone en anglais. Joue à des jeux vidéo en anglais. Lis les mangas/BD que tu aimes en anglais. L\'apprentissage non-conscient est le plus puissant.'},
+];
+
+// READING PASSAGES
+const READINGS = [
+  {
+    title:"What is Software Engineering?",
+    level:"A2/B1",
+    text:`Software engineering is the process of <span class="vocab-hl" onclick="speak('designing')">designing</span>, developing, and <span class="vocab-hl" onclick="speak('maintaining')">maintaining</span> software systems. Software engineers use <span class="vocab-hl" onclick="speak('programming languages')">programming languages</span> like Python, JavaScript, and Java to build applications.
+
+A software engineer must understand user <span class="vocab-hl" onclick="speak('requirements')">requirements</span> and translate them into working code. They also test their code to find and fix <span class="vocab-hl" onclick="speak('bugs')">bugs</span>. Teamwork and communication skills are very important in this field.
+
+Today, software engineering is one of the most <span class="vocab-hl" onclick="speak('in-demand')">in-demand</span> careers in the world. Companies like Google, Amazon, and Meta employ thousands of software engineers worldwide.`,
+    questions:[
+      {q:"What do software engineers use to build applications?",opts:["Books","Programming languages","Mathematics only","Machines"],ans:"Programming languages"},
+      {q:"What do engineers do to find bugs?",opts:["They delete the code","They test their code","They ignore errors","They ask users"],ans:"They test their code"},
+    ]
+  },
+  {
+    title:"The History of the Internet",
+    level:"B1",
+    text:`The internet was originally <span class="vocab-hl" onclick="speak('developed')">developed</span> in the 1960s by the United States military as a <span class="vocab-hl" onclick="speak('communication network')">communication network</span> called ARPANET. It was designed to survive a nuclear attack by having no central point of control.
+
+By the 1990s, the World Wide Web was <span class="vocab-hl" onclick="speak('invented')">invented</span> by Tim Berners-Lee, making the internet accessible to the general public. Websites, email, and online <span class="vocab-hl" onclick="speak('commerce')">commerce</span> quickly transformed how people <span class="vocab-hl" onclick="speak('communicate')">communicate</span> and do business.
+
+Today, more than 5 billion people use the internet. It has completely changed <span class="vocab-hl" onclick="speak('education')">education</span>, healthcare, entertainment, and global communication.`,
+    questions:[
+      {q:"When was the internet originally developed?",opts:["1980s","1990s","1960s","2000s"],ans:"1960s"},
+      {q:"Who invented the World Wide Web?",opts:["Bill Gates","Steve Jobs","Tim Berners-Lee","Elon Musk"],ans:"Tim Berners-Lee"},
+    ]
+  },
+  {
+    title:"Artificial Intelligence in Africa",
+    level:"B2",
+    text:`<span class="vocab-hl" onclick="speak('Artificial intelligence')">Artificial intelligence</span> is rapidly transforming industries across Africa. From agriculture to healthcare, AI-powered solutions are addressing <span class="vocab-hl" onclick="speak('challenges')">challenges</span> that have persisted for decades.
+
+In West Africa, startups are using machine learning to <span class="vocab-hl" onclick="speak('predict')">predict</span> crop yields and optimize irrigation systems. In East Africa, AI is being used to diagnose diseases in remote areas where doctors are <span class="vocab-hl" onclick="speak('scarce')">scarce</span>.
+
+However, there are <span class="vocab-hl" onclick="speak('significant')">significant</span> obstacles. Limited internet <span class="vocab-hl" onclick="speak('infrastructure')">infrastructure</span>, lack of local training data, and shortage of skilled engineers remain major challenges. Young African developers like Sultan are crucial to building solutions that truly understand local <span class="vocab-hl" onclick="speak('contexts')">contexts</span> and needs.`,
+    questions:[
+      {q:"How is AI used in West Africa according to the text?",opts:["To build roads","To predict crop yields","To create movies","To manufacture cars"],ans:"To predict crop yields"},
+      {q:"What is mentioned as a challenge for AI in Africa?",opts:["Too many engineers","Limited internet infrastructure","Too much data","High salaries"],ans:"Limited internet infrastructure"},
+    ]
+  },
+];
+
+// ============================================================
+// INIT FUNCTIONS
+// ============================================================
+
+// ALPHABET
+function initAlphabet() {
+  const grid = document.getElementById('alphaGrid');
+  const info = document.getElementById('alphaInfo');
+  ALPHABET.forEach(a => {
+    const btn = document.createElement('button');
+    btn.className = 'alpha-btn';
+    btn.textContent = a.l;
+    btn.onclick = () => {
+      info.className = 'alpha-info show';
+      info.innerHTML = `<div class="snd">${a.l} — /${a.s}/</div><div class="exs">📝 ${a.ex}</div><button class="speak-btn" style="margin-top:.5rem" data-text="${a.l}" onclick="speakEl(this)">🔊 Écouter</button>`;
+      speak(a.l);
+      addXP(1);
+    };
+    grid.appendChild(btn);
+  });
+
+  const phonGrid = document.getElementById('phonGrid');
+  PHONETICS.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'pron-card';
+    card.innerHTML = `<div class="symbol">${p.sym}</div><div class="name">${p.name}</div><div class="words">${p.words}</div>`;
+    card.onclick = () => { speak(p.words.split(',')[0].trim()); addXP(1); };
+    phonGrid.appendChild(card);
+  });
+
+  const rulesTable = document.getElementById('pronRulesTable');
+  rulesTable.innerHTML = `<thead><tr><th>Règle</th><th>Exemples</th><th>Explication</th></tr></thead>`;
+  const tbody = document.createElement('tbody');
+  PRON_RULES.forEach(r => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td style="font-weight:600;color:var(--gold)">${r.rule}</td><td class="en-cell" style="cursor:pointer" data-text="${r.en.replace(/"/g,'&quot;')}" onclick="speakEl(this)">${r.en} 🔊</td><td class="ex-cell">${r.ex}</td>`;
+    tbody.appendChild(tr);
+  });
+  rulesTable.appendChild(tbody);
+}
+
+// VOCAB
+function initVocab() {
+  const pills = document.getElementById('vocabPills');
+  const grid = document.getElementById('vocabGrid');
+  const cats = Object.keys(VOCAB);
+  let active = cats[0];
+
+  function renderVocab(cat) {
+    active = cat;
+    grid.innerHTML = '';
+    document.querySelectorAll('#vocabPills .pill').forEach(b => b.classList.toggle('active', b.dataset.cat === cat));
+    VOCAB[cat].forEach(v => {
+      const card = document.createElement('div');
+      card.className = 'vcard';
+      card.innerHTML = `<span class="em">${v.em}</span><div class="en">${v.en}</div><div class="ph">${v.ph}</div><div class="fr">🇫🇷 ${v.fr}</div><div class="lvl"><span class="tag tag-${v.lv}">${v.lv.toUpperCase()}</span></div>`;
+      card.onclick = () => { card.classList.toggle('revealed'); speak(v.en.split('/')[0].trim()); addXP(2); };
+      grid.appendChild(card);
+    });
+  }
+
+  cats.forEach(cat => {
+    const btn = document.createElement('button');
+    btn.className = 'pill' + (cat === cats[0] ? ' active' : '');
+    btn.dataset.cat = cat;
+    btn.textContent = cat;
+    btn.onclick = () => renderVocab(cat);
+    pills.appendChild(btn);
+  });
+  renderVocab(cats[0]);
+}
+
+// GRAMMAR
+function initGrammar() {
+  const pills = document.getElementById('grammarPills');
+  const content = document.getElementById('grammarContent');
+  const topics = Object.keys(GRAMMAR);
+
+  function renderGrammar(topic) {
+    content.innerHTML = '';
+    document.querySelectorAll('#grammarPills .pill').forEach(b => b.classList.toggle('active', b.dataset.t === topic));
+    const g = GRAMMAR[topic];
+    const wrap = document.createElement('div');
+
+    if (g.irregular) {
+      wrap.innerHTML = `<div class="card"><p style="color:var(--muted);font-size:.83rem;margin-bottom:1rem;">${g.desc}</p><table class="gtable"><thead><tr><th>Base</th><th>Passé simple</th><th>Participe passé</th><th>🇫🇷</th></tr></thead><tbody>${g.irregular.map(v=>`<tr><td style="cursor:pointer;color:var(--teal)" onclick="speak('${v.base}')">${v.base} 🔊</td><td style="cursor:pointer" onclick="speak('${v.past}')">${v.past}</td><td onclick="speak('${v.pp}')">${v.pp}</td><td style="color:var(--muted)">${v.fr}</td></tr>`).join('')}</tbody></table></div>`;
+    } else {
+      let html = `<div class="card"><p style="font-size:.83rem;color:var(--muted);margin-bottom:1rem;border-left:3px solid ${g.color};padding-left:.7rem;">${g.desc}</p><div class="tense-block"><div class="tense-title" style="color:${g.color}">Structure</div><table class="gtable"><thead><tr><th>🇫🇷</th><th>🇬🇧</th><th>Note</th></tr></thead><tbody>${g.rules.map(r=>`<tr><td>${r.fr}</td><td class="en-cell" style="cursor:pointer" data-text="${r.en.replace(/"/g,'&quot;')}" onclick="speakEl(this)"> ${r.en} 🔊</td><td class="ex-cell">${r.note}</td></tr>`).join('')}</tbody></table></div><div class="tense-block"><div class="tense-title" style="color:${g.color}">Exemples</div>${g.examples.map(ex=>`<div style="background:var(--surface2);border-radius:8px;padding:.5rem .9rem;margin-bottom:.4rem;cursor:pointer;font-size:.88rem;color:var(--teal);font-style:italic" data-text="${ex.replace(/"/g,'&quot;')}" onclick="speakEl(this)">▶ ${ex}</div>`).join('')}</div></div>`;
+      wrap.innerHTML = html;
+    }
+    content.appendChild(wrap);
+  }
+
+  topics.forEach(t => {
+    const btn = document.createElement('button');
+    btn.className = 'pill' + (t === topics[0] ? ' active' : '');
+    btn.dataset.t = t;
+    btn.textContent = t;
+    btn.onclick = () => renderGrammar(t);
+    pills.appendChild(btn);
+  });
+  renderGrammar(topics[0]);
+}
+
+// PHRASES
+function initPhrases() {
+  const pills = document.getElementById('phrasesPills');
+  const content = document.getElementById('phrasesContent');
+  const cats = Object.keys(PHRASES);
+
+  function renderPhrases(cat) {
+    content.innerHTML = '';
+    document.querySelectorAll('#phrasesPills .pill').forEach(b => b.classList.toggle('active', b.dataset.c === cat));
+    PHRASES[cat].forEach(p => {
+      const card = document.createElement('div');
+      card.className = 'phrase-card';
+      const safePEn = p.en.replace(/"/g,'&quot;');
+      card.innerHTML = `<div class="en">${p.en} <button class="speak-btn" data-text="${safePEn}" onclick="event.stopPropagation();speakEl(this)">🔊</button></div><div class="fr">🇫🇷 ${p.fr}</div><div class="ctx">${p.ctx}</div>`;
+      card.onclick = () => { speak(p.en); addXP(1); };
+      content.appendChild(card);
+    });
+  }
+
+  cats.forEach(cat => {
+    const btn = document.createElement('button');
+    btn.className = 'pill' + (cat === cats[0] ? ' active' : '');
+    btn.dataset.c = cat;
+    btn.textContent = cat;
+    btn.onclick = () => renderPhrases(cat);
+    pills.appendChild(btn);
+  });
+  renderPhrases(cats[0]);
+}
+
+// IDIOMS
+function initIdioms() {
+  const content = document.getElementById('idiomsContent');
+  IDIOMS.forEach(id => {
+    const card = document.createElement('div');
+    card.className = 'idiom-card';
+    const safePhIdiom = id.ph.replace(/"/g,'&quot;');
+    card.innerHTML = `<div class="phrase">"${id.ph}" <button class="speak-btn" data-text="${safePhIdiom}" onclick="speakEl(this)">🔊</button></div><div class="meaning">🇫🇷 ${id.fr}</div><div class="example">💬 ${id.ex}</div><div class="lit">📖 Sens littéral : ${id.lit}</div>`;
+    content.appendChild(card);
+  });
+}
+
+// FALSE FRIENDS
+function initFalseFriends() {
+  const content = document.getElementById('ffContent');
+  const header = document.createElement('div');
+  header.className = 'card';
+  header.innerHTML = `<p style="font-size:.85rem;color:var(--muted);line-height:1.6">⚠️ Les <strong style="color:var(--coral)">faux amis</strong> sont des mots anglais qui ressemblent à des mots français mais ont un sens différent. Ils provoquent beaucoup d'erreurs ! Apprends-les bien.</p>`;
+  content.appendChild(header);
+  FALSE_FRIENDS.forEach(f => {
+    const card = document.createElement('div');
+    card.className = 'ff-card';
+    card.innerHTML = `
+      <div><div class="label">Mot anglais</div><div class="word" style="cursor:pointer" data-text="${f.word.replace(/"/g,'&quot;')}" onclick="speakEl(this)">${f.word} 🔊</div></div>
+      <div class="arrow">→</div>
+      <div>
+        <div class="label">❌ PAS : </div><div class="word wrong">${f.wrong}</div>
+        <div class="label" style="margin-top:.4rem">✅ MAIS : </div><div class="word right">${f.right}</div>
+        <div style="font-size:.72rem;color:var(--muted);margin-top:.3rem;font-style:italic">"${f.ex}"</div>
+      </div>`;
+    content.appendChild(card);
+  });
+}
+
+// QUIZ
+let qIdx = 0, qScore = 0, qAnswered = false, qStreakCount = 0;
+const qShuffled = [...QUIZ_QUESTIONS].sort(() => Math.random() - .5);
+
+function loadQuizQ() {
+  const q = qShuffled[qIdx];
+  document.getElementById('quizQ').textContent = q.q;
+  document.getElementById('quizHint').textContent = q.hint;
+  document.getElementById('quizFeedback').textContent = '';
+  document.getElementById('qNextBtn').classList.remove('show');
+  qAnswered = false;
+  const opts = document.getElementById('quizOpts');
+  opts.innerHTML = '';
+  [...q.opts].sort(() => Math.random() - .5).forEach(opt => {
+    const btn = document.createElement('button');
+    btn.className = 'qopt';
+    btn.textContent = opt;
+    btn.onclick = () => checkQuiz(btn, opt, q.ans, q.q);
+    opts.appendChild(btn);
+  });
+  document.getElementById('qTotal').textContent = qShuffled.length;
+}
+
+function checkQuiz(btn, chosen, correct, question) {
+  if (qAnswered) return;
+  qAnswered = true;
+  document.querySelectorAll('.qopt').forEach(b => { b.disabled = true; });
+  if (chosen === correct) {
+    qScore++; qStreakCount++;
+    btn.classList.add('correct');
+    document.getElementById('quizFeedback').innerHTML = `<span style="color:var(--green)">✅ Parfait ! +5 XP</span>`;
+    addXP(5);
+  } else {
+    qStreakCount = 0;
+    btn.classList.add('wrong');
+    document.querySelectorAll('.qopt').forEach(b => { if (b.textContent === correct) b.classList.add('correct'); });
+    document.getElementById('quizFeedback').innerHTML = `<span style="color:var(--coral)">❌ Réponse : "${correct}"</span>`;
+  }
+  speak(question);
+  document.getElementById('qScore').textContent = qScore;
+  document.getElementById('qStreak').textContent = qStreakCount;
+  document.getElementById('qNextBtn').classList.add('show');
+}
+
+function nextQuizQ() {
+  qIdx = (qIdx + 1) % qShuffled.length;
+  if (qIdx === 0) { qScore = 0; qStreakCount = 0; qShuffled.sort(() => Math.random() - .5); document.getElementById('qScore').textContent = 0; document.getElementById('qStreak').textContent = 0; document.getElementById('qTotal').textContent = qShuffled.length; }
+  loadQuizQ();
+}
+
+// FILL IN BLANK
+let fibIdx = 0, fibScore = 0;
+const fibShuffled = [...FIB_DATA].sort(() => Math.random() - .5);
+
+function loadFib() {
+  const f = fibShuffled[fibIdx];
+  const sentence = f.sent.replace('___', `<span class="fib-blank" id="blankSpan">___</span>`);
+  document.getElementById('fibSentence').innerHTML = `<div style="font-size:.8rem;color:var(--muted);margin-bottom:.5rem;">🇫🇷 ${f.fr}</div>${sentence}`;
+  document.getElementById('fibFeedback').textContent = '';
+  document.getElementById('fibNext').classList.remove('show');
+  const opts = document.getElementById('fibOpts');
+  opts.innerHTML = '';
+  [...f.opts].sort(() => Math.random() - .5).forEach(opt => {
+    const btn = document.createElement('button');
+    btn.className = 'fib-opt';
+    btn.textContent = opt;
+    btn.onclick = () => checkFib(btn, opt, f.blank, f.sent.replace('___', opt));
+    opts.appendChild(btn);
+  });
+  document.getElementById('fibTotal').textContent = fibShuffled.length;
+}
+
+function checkFib(btn, chosen, correct, fullSentence) {
+  document.querySelectorAll('.fib-opt').forEach(b => { b.disabled = true; });
+  if (chosen === correct) {
+    fibScore++; btn.classList.add('correct');
+    document.getElementById('blankSpan').textContent = chosen;
+    document.getElementById('blankSpan').style.color = 'var(--green)';
+    document.getElementById('fibFeedback').innerHTML = `<span style="color:var(--green)">✅ Excellent ! +3 XP</span>`;
+    addXP(3);
+    speak(fullSentence);
+  } else {
+    btn.classList.add('wrong');
+    document.querySelectorAll('.fib-opt').forEach(b => { if (b.textContent === correct) b.classList.add('correct'); });
+    document.getElementById('fibFeedback').innerHTML = `<span style="color:var(--coral)">❌ Correct : "${correct}"</span>`;
+    speak(fullSentence);
+  }
+  document.getElementById('fibScore').textContent = fibScore;
+  document.getElementById('fibNext').classList.add('show');
+}
+
+function nextFib() {
+  fibIdx = (fibIdx + 1) % fibShuffled.length;
+  if (fibIdx === 0) { fibScore = 0; fibShuffled.sort(() => Math.random() - .5); document.getElementById('fibScore').textContent = 0; document.getElementById('fibTotal').textContent = fibShuffled.length; }
+  loadFib();
+}
+
+// WORD ORDER
+let woIdx = 0, woScore = 0, woAnswered = false;
+const woShuffled = [...WORD_ORDER_DATA].sort(() => Math.random() - .5);
+let woPlaced = [];
+let woAvailable = [];
+
+function loadWordOrder() {
+  const wo = woShuffled[woIdx];
+  document.getElementById('woFrench').textContent = wo.fr;
+  document.getElementById('woFeedback').textContent = '';
+  document.getElementById('woNext').classList.remove('show');
+  woAnswered = false;
+  woPlaced = [];
+  woAvailable = [...wo.words].sort(() => Math.random() - .5);
+  renderWordOrder();
+  document.getElementById('woTotal').textContent = woShuffled.length;
+}
+
+function renderWordOrder() {
+  const target = document.getElementById('woTarget');
+  const wordsDiv = document.getElementById('woWords');
+  target.innerHTML = '';
+  wordsDiv.innerHTML = '';
+  woPlaced.forEach((w, i) => {
+    const el = document.createElement('div');
+    el.className = 'wo-word placed';
+    el.textContent = w;
+    el.onclick = () => { woAvailable.push(w); woPlaced.splice(i, 1); renderWordOrder(); };
+    target.appendChild(el);
+  });
+  woAvailable.forEach((w, i) => {
+    const el = document.createElement('div');
+    el.className = 'wo-word';
+    el.textContent = w;
+    el.onclick = () => { woPlaced.push(w); woAvailable.splice(i, 1); renderWordOrder(); };
+    wordsDiv.appendChild(el);
+  });
+}
+
+function checkWordOrder() {
+  if (woAnswered) return;
+  const correct = woShuffled[woIdx].words.join(' ');
+  const answer = woPlaced.join(' ');
+  const normalize = s => s.replace(/\s+([.,?!])/g, '$1').replace(/,\s*/g, ', ').trim();
+  const feedback = document.getElementById('woFeedback');
+  if (woPlaced.length === 0) {
+    feedback.innerHTML = '<span style="color:var(--gold)">⚠️ Place au moins un mot d\'abord !</span>';
+    return;
+  }
+  woAnswered = true;
+  if (normalize(answer) === normalize(correct)) {
+    woScore++;
+    feedback.innerHTML = `<span style="color:var(--green)">✅ Parfait ! +4 XP — "${correct}"</span>`;
+    addXP(4);
+    speak(correct);
+  } else {
+    feedback.innerHTML = `<span style="color:var(--coral)">❌ Correct : "${correct}"</span>`;
+  }
+  document.getElementById('woScore').textContent = woScore;
+  document.getElementById('woNext').classList.add('show');
+}
+
+function resetWordOrder() {
+  const wo = woShuffled[woIdx];
+  woPlaced = [];
+  woAvailable = [...wo.words].sort(() => Math.random() - .5);
+  document.getElementById('woFeedback').textContent = '';
+  document.getElementById('woNext').classList.remove('show');
+  woAnswered = false;
+  renderWordOrder();
+}
+
+function nextWordOrder() {
+  woIdx = (woIdx + 1) % woShuffled.length;
+  if (woIdx === 0) { woScore = 0; woShuffled.sort(() => Math.random() - .5); document.getElementById('woScore').textContent = 0; document.getElementById('woTotal').textContent = woShuffled.length; }
+  loadWordOrder();
+}
+
+// DICTATION
+let dictaIdx = 0, dictaScore = 0;
+const dictaShuffled = [...DICTATION_DATA].sort(() => Math.random() - .5);
+
+function playDictation(speed = 1) {
+  const d = dictaShuffled[dictaIdx];
+  speak(d.text, speed);
+  document.getElementById('dictaBtn').textContent = '🔊 Écouter encore';
+}
+
+function loadDictation() {
+  const d = dictaShuffled[dictaIdx];
+  document.getElementById('dictaLevel').textContent = `Niveau : ${d.level}`;
+  document.getElementById('dictaInput').value = '';
+  document.getElementById('dictaResult').innerHTML = '';
+  document.getElementById('dictaNext').classList.remove('show');
+  document.getElementById('dictaTotal').textContent = dictaShuffled.length;
+  document.getElementById('dictaBtn').textContent = '🔊 Écouter la phrase';
+}
+
+function checkDictation() {
+  const d = dictaShuffled[dictaIdx];
+  const input = document.getElementById('dictaInput').value.trim();
+  if (!input) {
+    document.getElementById('dictaResult').innerHTML = '<span style="color:var(--gold)">⚠️ Écris la phrase d\'abord !</span>';
+    return;
+  }
+  const correct = d.text;
+  const inputWords = input.toLowerCase().replace(/[.,!?]/g,'').split(/\s+/);
+  const correctWords = correct.toLowerCase().replace(/[.,!?]/g,'').split(/\s+/);
+  let html = '';
+  let allCorrect = true;
+  correctWords.forEach((w, i) => {
+    const given = inputWords[i] || '';
+    if (given === w) {
+      html += `<span class="ok">${d.text.split(/\s+/)[i]} </span>`;
+    } else {
+      html += `<span class="err" title="Tu as écrit: ${given || '(rien)'}">${d.text.split(/\s+/)[i]} </span>`;
+      allCorrect = false;
+    }
+  });
+  if (allCorrect) {
+    dictaScore++;
+    document.getElementById('dictaResult').innerHTML = `<span style="color:var(--green)">✅ Parfait ! +6 XP</span><br>${html}`;
+    addXP(6);
+  } else {
+    document.getElementById('dictaResult').innerHTML = `<span style="color:var(--coral)">❌ Corrections (mots soulignés) :</span><br>${html}`;
+  }
+  document.getElementById('dictaScore').textContent = dictaScore;
+  document.getElementById('dictaNext').classList.add('show');
+}
+
+function nextDictation() {
+  dictaIdx = (dictaIdx + 1) % dictaShuffled.length;
+  if (dictaIdx === 0) { dictaScore = 0; dictaShuffled.sort(() => Math.random() - .5); document.getElementById('dictaScore').textContent = 0; document.getElementById('dictaTotal').textContent = dictaShuffled.length; }
+  loadDictation();
+}
+
+// READING
+function initReading() {
+  const content = document.getElementById('readingContent');
+  READINGS.forEach(r => {
+    const card = document.createElement('div');
+    card.className = 'reading-card';
+    const safeTitle = r.title.replace(/[^a-zA-Z0-9]/g,'');
+    let qHtml = r.questions.map((q, qi) => `
+      <div class="reading-q">${qi+1}. ${q.q}</div>
+      <div class="reading-opts" id="ropts-${safeTitle}-${qi}">
+        ${q.opts.map(o => `<button class="reading-opt" onclick="checkReadingOpt(this,'${o.replace(/'/g,"\\'")}','${q.ans.replace(/'/g,"\\'")}','${safeTitle}-${qi}')">${o}</button>`).join('')}
+      </div>`).join('');
+    card.innerHTML = `<div class="rtitle"><span>📄 ${r.title}</span><span class="tag tag-b1">${r.level}</span></div><div class="rtext">${r.text}</div>${qHtml}`;
+    content.appendChild(card);
+  });
+}
+
+function checkReadingOpt(btn, chosen, correct, id) {
+  const container = document.getElementById('ropts-' + id);
+  if (container.dataset.answered) return;
+  container.dataset.answered = '1';
+  container.querySelectorAll('.reading-opt').forEach(b => { b.disabled = true; });
+  if (chosen === correct) {
+    btn.classList.add('correct');
+    addXP(5);
+  } else {
+    btn.classList.add('wrong');
+    container.querySelectorAll('.reading-opt').forEach(b => { if (b.textContent.trim() === correct) b.classList.add('correct'); });
+  }
+}
+
+// DIALOGUES
+function initDialogues() {
+  const pills = document.getElementById('dlgPills');
+  const box = document.getElementById('dlgBox');
+  const keys = Object.keys(DIALOGUES);
+
+  function renderDlg(key) {
+    box.innerHTML = '';
+    document.querySelectorAll('#dlgPills .pill').forEach(b => b.classList.toggle('active', b.dataset.d === key));
+    DIALOGUES[key].forEach(m => {
+      const el = document.createElement('div');
+      el.className = `dlg-msg ${m.side}`;
+      el.innerHTML = `<div class="dlg-avatar">${m.who}</div><div class="dlg-bubble">${m.en}<div class="dlg-tr">🇫🇷 ${m.fr}</div></div>`;
+      el.onclick = () => { speak(m.en); addXP(1); };
+      box.appendChild(el);
+    });
+  }
+
+  keys.forEach(k => {
+    const btn = document.createElement('button');
+    btn.className = 'pill' + (k === keys[0] ? ' active' : '');
+    btn.dataset.d = k;
+    btn.textContent = k;
+    btn.onclick = () => renderDlg(k);
+    pills.appendChild(btn);
+  });
+  renderDlg(keys[0]);
+}
+
+// PROVERBS
+function initProverbs() {
+  const content = document.getElementById('proverbsContent');
+  PROVERBS.forEach(p => {
+    const card = document.createElement('div');
+    card.className = 'proverb-card';
+    card.style.cursor = 'pointer';
+    const safeProvEn = p.en.replace(/"/g,'&quot;');
+    card.innerHTML = `<div class="prov-en">"${p.en}" <button class="speak-btn" data-text="${safeProvEn}" onclick="event.stopPropagation();speakEl(this)">🔊</button></div><div class="prov-fr">🇫🇷 ${p.fr}</div><div class="prov-meaning">💡 ${p.meaning}</div>`;
+    card.onclick = () => { speak(p.en); addXP(1); };
+    content.appendChild(card);
+  });
+}
+
+// TIPS
+function initTips() {
+  const content = document.getElementById('tipsContent');
+  TIPS.forEach(t => {
+    const card = document.createElement('div');
+    card.className = 'tip-card';
+    card.innerHTML = `<div class="ico">${t.ico}</div><div><strong>${t.title}</strong><p>${t.text}</p></div>`;
+    content.appendChild(card);
+  });
+}
+
+// NAV
+function showSection(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+
+// ============================================================
+// BOOT
+// ============================================================
+initAlphabet();
+initVocab();
+initGrammar();
+initPhrases();
+initIdioms();
+initFalseFriends();
+loadQuizQ();
+loadFib();
+loadWordOrder();
+loadDictation();
+initReading();
+initDialogues();
+initProverbs();
+initTips();
+
+// ═══════════════════════════════════════════════
+// PWA — Service Worker Registration
+// ═══════════════════════════════════════════════
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js')
+      .then(reg => {
+        console.log('[PWA] Service Worker enregistré:', reg.scope);
+        // Vérifie les mises à jour toutes les 60 secondes
+        setInterval(() => reg.update(), 60000);
+        // Quand une nouvelle version est disponible
+        reg.addEventListener('updatefound', () => {
+          const newWorker = reg.installing;
+          newWorker.addEventListener('statechange', () => {
+            if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+              showUpdateBanner();
+            }
+          });
+        });
+      })
+      .catch(err => console.warn('[PWA] Service Worker non enregistré:', err));
+  });
+}
+
+// ═══════════════════════════════════════════════
+// PWA — Bannière "Installer l'app"
+// ═══════════════════════════════════════════════
+let deferredInstallPrompt = null;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredInstallPrompt = e;
+  // Affiche le bouton d'installation après 3 secondes
+  setTimeout(showInstallBanner, 3000);
+});
+
+function showInstallBanner() {
+  // Ne pas afficher si déjà installé
+  if (window.matchMedia('(display-mode: standalone)').matches) return;
+  if (document.getElementById('installBanner')) return;
+
+  const banner = document.createElement('div');
+  banner.id = 'installBanner';
+  banner.innerHTML = `
+    <div style="display:flex;align-items:center;gap:.8rem;">
+      <span style="font-size:1.4rem;">📲</span>
+      <div>
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:.85rem;color:#1a1d2e;">Installer English Master</div>
+        <div style="font-size:.75rem;color:#6b7280;margin-top:.1rem;">Accès rapide depuis ton écran d'accueil</div>
+      </div>
+    </div>
+    <div style="display:flex;gap:.5rem;margin-top:.8rem;">
+      <button id="installBtn" style="flex:1;background:#4f6ef7;color:#fff;border:none;border-radius:99px;padding:.5rem 1rem;font-family:'Syne',sans-serif;font-size:.78rem;font-weight:700;cursor:pointer;">📲 Installer</button>
+      <button id="dismissBtn" style="background:#f0f2f7;color:#6b7280;border:1px solid #e2e6ef;border-radius:99px;padding:.5rem .9rem;font-family:'Syne',sans-serif;font-size:.78rem;font-weight:700;cursor:pointer;">Plus tard</button>
+    </div>
+  `;
+  banner.style.cssText = `
+    position:fixed;bottom:1rem;left:50%;transform:translateX(-50%);
+    width:calc(100% - 2rem);max-width:400px;
+    background:#fff;border:1px solid #e2e6ef;border-radius:16px;
+    padding:1rem;box-shadow:0 8px 30px rgba(0,0,0,.12);
+    z-index:1000;animation:slideUp .3s ease;
+  `;
+
+  // Ajouter l'animation
+  if (!document.getElementById('pwaStyles')) {
+    const style = document.createElement('style');
+    style.id = 'pwaStyles';
+    style.textContent = `
+      @keyframes slideUp { from { opacity:0; transform:translateX(-50%) translateY(20px); } to { opacity:1; transform:translateX(-50%) translateY(0); } }
+      @keyframes slideDown { from { opacity:1; transform:translateX(-50%) translateY(0); } to { opacity:0; transform:translateX(-50%) translateY(20px); } }
+    `;
+    document.head.appendChild(style);
+  }
+
+  document.body.appendChild(banner);
+
+  document.getElementById('installBtn').onclick = async () => {
+    if (!deferredInstallPrompt) return;
+    deferredInstallPrompt.prompt();
+    const { outcome } = await deferredInstallPrompt.userChoice;
+    console.log('[PWA] Installation:', outcome);
+    deferredInstallPrompt = null;
+    dismissInstallBanner();
+  };
+
+  document.getElementById('dismissBtn').onclick = dismissInstallBanner;
+}
+
+function dismissInstallBanner() {
+  const banner = document.getElementById('installBanner');
+  if (banner) {
+    banner.style.animation = 'slideDown .3s ease forwards';
+    setTimeout(() => banner.remove(), 300);
+  }
+}
+
+// ═══════════════════════════════════════════════
+// PWA — Bannière "Mise à jour disponible"
+// ═══════════════════════════════════════════════
+function showUpdateBanner() {
+  if (document.getElementById('updateBanner')) return;
+  const banner = document.createElement('div');
+  banner.id = 'updateBanner';
+  banner.innerHTML = `
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:.8rem;">
+      <span style="font-size:.85rem;font-family:'Syne',sans-serif;font-weight:700;color:#1a1d2e;">🔄 Mise à jour disponible</span>
+      <button onclick="window.location.reload()" style="background:#4f6ef7;color:#fff;border:none;border-radius:99px;padding:.35rem .9rem;font-family:'Syne',sans-serif;font-size:.75rem;font-weight:700;cursor:pointer;white-space:nowrap;">Actualiser</button>
+    </div>
+  `;
+  banner.style.cssText = `
+    position:fixed;top:.5rem;left:50%;transform:translateX(-50%);
+    width:calc(100% - 2rem);max-width:400px;
+    background:#fff;border:1px solid #e2e6ef;border-radius:12px;
+    padding:.75rem 1rem;box-shadow:0 4px 20px rgba(0,0,0,.1);
+    z-index:1000;
+  `;
+  document.body.appendChild(banner);
+}
+
+// ═══════════════════════════════════════════════
+// PWA — Bannière hors ligne
+// ═══════════════════════════════════════════════
+function showOfflineBanner() {
+  if (document.getElementById('offlineBanner')) return;
+  const banner = document.createElement('div');
+  banner.id = 'offlineBanner';
+  banner.innerHTML = `📵 Hors ligne — Contenu disponible en cache`;
+  banner.style.cssText = `
+    position:fixed;top:0;left:0;right:0;
+    background:#d97706;color:#fff;
+    text-align:center;padding:.4rem;
+    font-family:'Syne',sans-serif;font-size:.75rem;font-weight:700;
+    z-index:1001;
+  `;
+  document.body.appendChild(banner);
+}
+
+function hideOfflineBanner() {
+  const b = document.getElementById('offlineBanner');
+  if (b) b.remove();
+}
+
+window.addEventListener('offline', showOfflineBanner);
+window.addEventListener('online',  hideOfflineBanner);
+if (!navigator.onLine) showOfflineBanner();
+
+// ═══════════════════════════════════════════════
+// PWA — iOS : instructions d'installation manuelle
+//   (iOS ne supporte pas beforeinstallprompt)
+// ═══════════════════════════════════════════════
+function isIOS() {
+  return /iphone|ipad|ipod/i.test(navigator.userAgent) && !window.MSStream;
+}
+function isInStandaloneMode() {
+  return window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+}
+
+if (isIOS() && !isInStandaloneMode()) {
+  setTimeout(() => {
+    if (document.getElementById('iosBanner')) return;
+    const banner = document.createElement('div');
+    banner.id = 'iosBanner';
+    banner.innerHTML = `
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;">
+        <div>
+          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:.85rem;color:#1a1d2e;">📲 Installer sur iOS</div>
+          <div style="font-size:.78rem;color:#374151;margin-top:.4rem;line-height:1.5;">
+            1. Appuie sur <strong>Partager</strong> <span style="font-size:1rem;">⎙</span><br>
+            2. Puis <strong>"Sur l'écran d'accueil"</strong> <span style="font-size:.9rem;">➕</span>
+          </div>
+        </div>
+        <button onclick="this.closest('#iosBanner').remove()" style="background:none;border:none;font-size:1.2rem;cursor:pointer;color:#9ca3af;padding:.2rem;">✕</button>
+      </div>
+    `;
+    banner.style.cssText = `
+      position:fixed;bottom:1rem;left:50%;transform:translateX(-50%);
+      width:calc(100% - 2rem);max-width:380px;
+      background:#fff;border:1px solid #e2e6ef;border-radius:16px;
+      padding:1rem;box-shadow:0 8px 30px rgba(0,0,0,.12);z-index:1000;
+    `;
+    document.body.appendChild(banner);
+  }, 4000);
+}
+</script>
+</body>
+</html>

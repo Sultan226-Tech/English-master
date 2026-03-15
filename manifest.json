@@ -1,0 +1,43 @@
+{
+  "name": "English Master",
+  "short_name": "EnglishMaster",
+  "description": "Apprends l'anglais de A1 à C1 — Vocabulaire, Grammaire, Quiz, Dictée",
+  "start_url": "./english_tutor.html",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f5f7fa",
+  "theme_color": "#4f6ef7",
+  "lang": "fr",
+  "icons": [
+    {
+      "src": "icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "language"],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Quiz",
+      "short_name": "Quiz",
+      "description": "Lancer le quiz",
+      "url": "./english_tutor.html#quiz",
+      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Vocabulaire",
+      "short_name": "Vocab",
+      "description": "Réviser le vocabulaire",
+      "url": "./english_tutor.html#vocab",
+      "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}
