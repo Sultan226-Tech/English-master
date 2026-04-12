@@ -7,7 +7,7 @@ const CACHE_NAME = 'english-master-v1';
 
 // Fichiers à mettre en cache au premier lancement
 const STATIC_ASSETS = [
-  './english_tutor.html',
+  './index.html',
   './manifest.json',
   './icon-192.png',
   './icon-512.png',
@@ -107,7 +107,7 @@ self.addEventListener('fetch', (event) => {
       }).catch(() => {
         // Hors ligne et pas en cache — page d'erreur offline
         if (event.request.destination === 'document') {
-          return caches.match('./english_tutor.html');
+          return caches.match('./index.html');
         }
       });
     })
