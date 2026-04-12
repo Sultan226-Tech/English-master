@@ -2,7 +2,7 @@
   "name": "English Master",
   "short_name": "EnglishMaster",
   "description": "Apprends l'anglais de A1 à C1 — Vocabulaire, Grammaire, Quiz, Dictée",
-  "start_url": "./english_tutor.html",
+  "start_url": "./index.html",
   "display": "standalone",
   "orientation": "portrait",
   "background_color": "#f5f7fa",
@@ -29,14 +29,14 @@
       "name": "Quiz",
       "short_name": "Quiz",
       "description": "Lancer le quiz",
-      "url": "./english_tutor.html#quiz",
+      "url": "./index.html#quiz",
       "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
     },
     {
       "name": "Vocabulaire",
       "short_name": "Vocab",
       "description": "Réviser le vocabulaire",
-      "url": "./english_tutor.html#vocab",
+      "url": "./index.html#vocab",
       "icons": [{ "src": "icon-192.png", "sizes": "192x192" }]
     }
   ]
