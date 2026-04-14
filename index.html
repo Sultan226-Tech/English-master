@@ -66,12 +66,264 @@
   --radius-pill: 99px;
 }
 
+/* DARK MODE */
+[data-theme="dark"] {
+  --bg: #0f1117;
+  --surface: #1a1d2e;
+  --surface2: #242838;
+  --border: #2e3347;
+  --border2: #3a3f5c;
+  --accent: #6b8aff;
+  --accent2: #5a75f0;
+  --teal: #2dd4bf;
+  --teal-light: #0f2e2c;
+  --coral: #f87171;
+  --coral-light: #2d1515;
+  --lavender: #a78bfa;
+  --lavender-light: #1e1530;
+  --green: #4ade80;
+  --green-light: #0d2018;
+  --gold: #fbbf24;
+  --gold-light: #2d1f00;
+  --blue: #60a5fa;
+  --text: #e8eaf6;
+  --text2: #b0b8d0;
+  --muted: #7b84a0;
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.3), 0 1px 2px rgba(0,0,0,.2);
+  --shadow-md: 0 4px 12px rgba(0,0,0,.35), 0 2px 6px rgba(0,0,0,.2);
+  --shadow-lg: 0 10px 28px rgba(0,0,0,.4), 0 4px 10px rgba(0,0,0,.25);
+}
+
+/* UNLOCK ANIMATION OVERLAY */
+.unlock-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.6);
+  backdrop-filter: blur(6px);
+  z-index: 3000;
+  display: flex; align-items: center; justify-content: center;
+  animation: fadeIn .25s ease;
+}
+.unlock-box {
+  background: var(--surface);
+  border: 2px solid var(--accent);
+  border-radius: 24px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  max-width: 340px; width: 90%;
+  box-shadow: 0 0 60px rgba(79,110,247,.35), var(--shadow-lg);
+  animation: unlockPop .5s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes unlockPop {
+  0%  { opacity:0; transform: scale(.6) rotate(-4deg); }
+  60% { transform: scale(1.07) rotate(1deg); }
+  100%{ opacity:1; transform: scale(1) rotate(0); }
+}
+.unlock-emoji { font-size: 3rem; display: block; margin-bottom: .6rem;
+  animation: bounce 1s ease infinite; }
+@keyframes bounce {
+  0%,100%{ transform:translateY(0); }
+  50%    { transform:translateY(-8px); }
+}
+.unlock-box h3 {
+  font-family: 'Syne', sans-serif; font-size: 1.3rem; font-weight: 800;
+  color: var(--text); margin-bottom: .4rem;
+}
+.unlock-box p { font-size: .85rem; color: var(--muted); line-height: 1.5; margin-bottom: 1.2rem; }
+.unlock-ok {
+  background: linear-gradient(135deg, var(--accent), var(--teal));
+  color: #fff; border: none; border-radius: var(--radius-pill);
+  padding: .65rem 2rem; font-family: 'Syne', sans-serif; font-size: .88rem;
+  font-weight: 700; cursor: pointer;
+  box-shadow: 0 4px 14px rgba(79,110,247,.35);
+  transition: opacity .2s;
+}
+.unlock-ok:hover { opacity: .88; }
+
+/* Section progress mini-bar */
+.sec-progress {
+  display: flex; align-items: center; gap: .6rem;
+  background: var(--surface2); border: 1px solid var(--border);
+  border-radius: var(--radius-pill); padding: .35rem .85rem;
+  font-family: 'Syne', sans-serif; font-size: .72rem; font-weight: 700;
+  color: var(--muted); margin-bottom: 1rem;
+}
+.sec-progress-bar {
+  flex: 1; height: 5px; background: var(--border);
+  border-radius: var(--radius-pill); overflow: hidden;
+}
+.sec-progress-fill {
+  height: 100%; background: linear-gradient(90deg, var(--accent), var(--teal));
+  border-radius: var(--radius-pill); transition: width .4s ease;
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-pill);
+  padding: .35rem .75rem;
+  font-size: .8rem;
+  cursor: pointer;
+  color: var(--text2);
+  font-family: 'Syne', sans-serif;
+  font-weight: 700;
+  transition: all .2s;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  gap: .3rem;
+  z-index: 10;
+}
+.theme-toggle:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ONBOARDING MODAL */
+.onboard-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.7);
+  backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: flex; align-items: center; justify-content: center;
+  padding: 1rem;
+  animation: fadeIn .3s ease;
+}
+@keyframes fadeIn { from{opacity:0} to{opacity:1} }
+.onboard-box {
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: 22px;
+  padding: 1.75rem 1.75rem 2rem;
+  max-width: 420px;
+  width: 100%;
+  box-shadow: var(--shadow-lg);
+  animation: popIn .35s cubic-bezier(.34,1.56,.64,1);
+}
+@keyframes popIn { from{opacity:0;transform:scale(.85)} to{opacity:1;transform:scale(1)} }
+.onboard-box h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: .4rem;
+  text-align: center;
+  line-height: 1.3;
+}
+.onboard-box p { font-size: .85rem; color: var(--muted); margin-bottom: 1.1rem; line-height: 1.6; text-align:center; }
+.onboard-input {
+  width: 100%;
+  background: var(--surface2);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: .75rem 1rem;
+  color: var(--text);
+  font-family: 'Literata', serif;
+  font-size: 1rem;
+  outline: none;
+  transition: border .2s;
+  margin-bottom: 1rem;
+  display:block;
+}
+.onboard-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(79,110,247,.15); }
+.onboard-btn {
+  width: 100%;
+  background: linear-gradient(135deg, var(--accent), var(--teal));
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: .75rem;
+  font-family: 'Syne', sans-serif;
+  font-size: .9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity .2s;
+  box-shadow: 0 4px 14px rgba(79,110,247,.3);
+  display:block;
+}
+.onboard-btn:hover { opacity: .9; }
+
+/* Progress dots */
+.onboard-progress {
+  display:flex; align-items:center; justify-content:center;
+  gap:0; margin-bottom:1.5rem;
+}
+.onboard-step-dot {
+  width:10px; height:10px; border-radius:50%;
+  background:var(--border2); transition:background .3s,transform .3s;
+  flex-shrink:0;
+}
+.onboard-step-dot.active { background:var(--accent); transform:scale(1.25); }
+.onboard-step-dot.done { background:var(--teal); }
+.onboard-step-line {
+  flex:1; max-width:48px; height:2px;
+  background:var(--border); transition:background .3s;
+}
+.onboard-step-line.done { background:var(--teal); }
+
+/* Level choices */
+.onboard-levels { display:flex; flex-direction:column; gap:.5rem; }
+.level-choice {
+  display:flex; align-items:center; gap:.75rem;
+  background:var(--surface2); border:1.5px solid var(--border);
+  border-radius:var(--radius-sm); padding:.65rem .9rem;
+  cursor:pointer; transition:all .2s; text-align:left; width:100%;
+}
+.level-choice:hover,.level-choice.selected {
+  border-color:var(--accent); background:#eef1ff;
+}
+[data-theme="dark"] .level-choice:hover,
+[data-theme="dark"] .level-choice.selected { background:#1e2350; }
+.level-choice.selected { box-shadow:0 0 0 2px var(--accent); }
+.lc-badge {
+  font-family:'Syne',sans-serif; font-weight:800; font-size:.75rem;
+  padding:.2rem .55rem; border-radius:var(--radius-pill); flex-shrink:0;
+}
+.lc-label { font-family:'Syne',sans-serif; font-weight:700; font-size:.85rem; color:var(--text); flex:1; }
+.lc-desc { font-size:.72rem; color:var(--muted); }
+
+/* Job choices */
+.onboard-jobs { display:grid; grid-template-columns:1fr 1fr; gap:.5rem; }
+.job-choice {
+  background:var(--surface2); border:1.5px solid var(--border);
+  border-radius:var(--radius-sm); padding:.65rem .75rem;
+  cursor:pointer; transition:all .2s; font-family:'Syne',sans-serif;
+  font-size:.8rem; font-weight:700; color:var(--text2); text-align:center;
+}
+.job-choice:hover,.job-choice.selected {
+  border-color:var(--accent); background:#eef1ff; color:var(--accent);
+}
+[data-theme="dark"] .job-choice:hover,
+[data-theme="dark"] .job-choice.selected { background:#1e2350; }
+.job-choice.selected { box-shadow:0 0 0 2px var(--accent); }
+
+/* Profile banner (in header) */
+.profile-banner {
+  display:inline-flex; align-items:center; gap:.5rem;
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:var(--radius-pill); padding:.3rem .85rem;
+  font-family:'Syne',sans-serif; font-size:.72rem; font-weight:700;
+  color:var(--text2); cursor:pointer; box-shadow:var(--shadow-sm);
+  margin-top:.6rem; transition:all .2s;
+}
+.profile-banner:hover { border-color:var(--accent); color:var(--accent); }
+
+/* Adaptive info banner */
+.adapt-banner {
+  background:linear-gradient(135deg,var(--lavender-light),var(--teal-light));
+  border:1px solid rgba(124,92,219,.2);
+  border-radius:var(--radius); padding:.75rem 1rem;
+  margin-bottom:1rem; font-size:.82rem; color:var(--text2);
+  display:flex; align-items:center; gap:.6rem;
+}
+[data-theme="dark"] .adapt-banner { background:linear-gradient(135deg,#1e1530,#0f2e2c); }
+
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-body{background:var(--bg);font-family:'Literata',Georgia,serif;color:var(--text);min-height:100vh;overflow-x:hidden;}
+body{background:var(--bg);font-family:'Literata',Georgia,serif;color:var(--text);min-height:100vh;overflow-x:hidden;transition:background .25s,color .25s;}
 
 /* HEADER */
 header{background:linear-gradient(135deg,#ffffff 0%,#eef1ff 50%,#f0faff 100%);padding:2rem 1.5rem 1.5rem;text-align:center;position:relative;overflow:hidden;border-bottom:1px solid var(--border);}
+[data-theme="dark"] header{background:linear-gradient(135deg,#1a1d2e 0%,#1e2240 50%,#1a2535 100%);}
 header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 25% 60%,rgba(79,110,247,.06) 0%,transparent 55%),radial-gradient(ellipse at 75% 30%,rgba(14,165,160,.05) 0%,transparent 55%);pointer-events:none;}
 header h1{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,6vw,3rem);font-weight:800;letter-spacing:-1.5px;color:var(--text);position:relative;}
 header h1 span{color:var(--accent);background:linear-gradient(135deg,var(--accent),var(--teal));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
@@ -94,7 +346,9 @@ nav{background:var(--surface);border-bottom:1px solid var(--border);display:flex
 nav::-webkit-scrollbar{display:none;}
 .nav-btn{flex-shrink:0;background:none;border:none;border-bottom:2.5px solid transparent;padding:.75rem 1rem;font-family:'Syne',sans-serif;font-size:.72rem;font-weight:700;color:var(--muted);cursor:pointer;transition:all .2s;white-space:nowrap;letter-spacing:.3px;text-transform:uppercase;}
 .nav-btn.active{color:var(--accent);border-bottom-color:var(--accent);}
-.nav-btn:hover:not(.active){color:var(--text2);}
+.nav-btn:hover:not(.active):not(.locked){color:var(--text2);}
+.nav-btn.locked{color:var(--border2);cursor:not-allowed;opacity:.55;position:relative;}
+.nav-btn.locked::after{content:'🔒';font-size:.6rem;margin-left:.2rem;vertical-align:middle;}
 
 /* MAIN */
 main{max-width:860px;margin:0 auto;padding:1.5rem 1rem 5rem;}
@@ -307,9 +561,87 @@ main{max-width:860px;margin:0 auto;padding:1.5rem 1rem 5rem;}
 </head>
 <body>
 
+<!-- ====== ONBOARDING MODAL (3 étapes) ====== -->
+<div class="onboard-overlay" id="onboardOverlay" style="display:none;">
+  <div class="onboard-box">
+
+    <!-- Barre de progression -->
+    <div class="onboard-progress">
+      <div class="onboard-step-dot active" id="dot1"></div>
+      <div class="onboard-step-line" id="line1"></div>
+      <div class="onboard-step-dot" id="dot2"></div>
+      <div class="onboard-step-line" id="line2"></div>
+      <div class="onboard-step-dot" id="dot3"></div>
+    </div>
+
+    <!-- ÉTAPE 1 — Prénom -->
+    <div class="onboard-step" id="step1">
+      <div style="font-size:2.5rem;text-align:center;margin-bottom:.6rem;">👋</div>
+      <h2>Bienvenue sur<br><span style="color:var(--accent)">English Master</span> !</h2>
+      <p>Commençons par faire connaissance. Comment tu t'appelles ?</p>
+      <input class="onboard-input" id="onboardName" type="text" placeholder="Ton prénom…" maxlength="30" autocomplete="off">
+      <button class="onboard-btn" onclick="onboardNext(1)">Continuer →</button>
+    </div>
+
+    <!-- ÉTAPE 2 — Niveau -->
+    <div class="onboard-step" id="step2" style="display:none;">
+      <div style="font-size:2.5rem;text-align:center;margin-bottom:.6rem;">📊</div>
+      <h2>Quel est ton <span style="color:var(--accent)">niveau</span> en anglais ?</h2>
+      <p>Choisis honnêtement — le contenu s'adaptera à toi.</p>
+      <div class="onboard-levels">
+        <button class="level-choice" data-level="A1" onclick="selectLevel(this)">
+          <span class="lc-badge" style="background:var(--green-light);color:var(--green);">A1</span>
+          <span class="lc-label">Débutant complet</span>
+          <span class="lc-desc">Je connais très peu de mots</span>
+        </button>
+        <button class="level-choice" data-level="A2" onclick="selectLevel(this)">
+          <span class="lc-badge" style="background:#eff6ff;color:var(--blue);">A2</span>
+          <span class="lc-label">Élémentaire</span>
+          <span class="lc-desc">Je comprends les bases</span>
+        </button>
+        <button class="level-choice" data-level="B1" onclick="selectLevel(this)">
+          <span class="lc-badge" style="background:var(--gold-light);color:var(--gold);">B1</span>
+          <span class="lc-label">Intermédiaire</span>
+          <span class="lc-desc">Je peux avoir des conversations simples</span>
+        </button>
+        <button class="level-choice" data-level="B2" onclick="selectLevel(this)">
+          <span class="lc-badge" style="background:var(--lavender-light);color:var(--lavender);">B2</span>
+          <span class="lc-label">Avancé</span>
+          <span class="lc-desc">Je m'exprime couramment</span>
+        </button>
+        <button class="level-choice" data-level="C1" onclick="selectLevel(this)">
+          <span class="lc-badge" style="background:var(--coral-light);color:var(--coral);">C1</span>
+          <span class="lc-label">Maîtrise</span>
+          <span class="lc-desc">Je veux perfectionner mon anglais</span>
+        </button>
+      </div>
+      <button class="onboard-btn" onclick="onboardNext(2)" style="margin-top:1rem;">Continuer →</button>
+    </div>
+
+    <!-- ÉTAPE 3 — Profession -->
+    <div class="onboard-step" id="step3" style="display:none;">
+      <div style="font-size:2.5rem;text-align:center;margin-bottom:.6rem;">💼</div>
+      <h2>Quelle est ta <span style="color:var(--accent)">situation</span> ?</h2>
+      <p>Le vocabulaire et les dialogues s'adapteront à ton domaine.</p>
+      <div class="onboard-jobs">
+        <button class="job-choice" data-job="tech" onclick="selectJob(this)">💻 Développeur / Tech</button>
+        <button class="job-choice" data-job="student" onclick="selectJob(this)">🎓 Étudiant(e)</button>
+        <button class="job-choice" data-job="business" onclick="selectJob(this)">📈 Business / Finance</button>
+        <button class="job-choice" data-job="health" onclick="selectJob(this)">🏥 Santé / Médecine</button>
+        <button class="job-choice" data-job="teacher" onclick="selectJob(this)">📚 Enseignant(e)</button>
+        <button class="job-choice" data-job="other" onclick="selectJob(this)">🌍 Autre / Général</button>
+      </div>
+      <button class="onboard-btn" id="onboardFinishBtn" onclick="onboardFinish()" style="margin-top:1rem;">🚀 Commencer l'apprentissage</button>
+    </div>
+
+  </div>
+</div>
+
 <header>
+  <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">🌙 Sombre</button>
   <h1>English <span>Master</span> 🇬🇧</h1>
-  <p>De A1 à C1 — Vocabulaire · Grammaire · Prononciation · Écriture</p>
+  <p id="headerSubtitle">De A1 à C1 — Vocabulaire · Grammaire · Prononciation · Écriture</p>
+  <div id="profileBadgeWrap"></div>
   <div class="level-badge">
     <span class="badge a1">A1 Débutant</span>
     <span class="badge a1">A2 Élémentaire</span>
@@ -522,25 +854,45 @@ function speak(text, rate = 1) {
 function speakEl(el) { speak(el.dataset.text || ''); }
 
 // ============================================================
-// XP SYSTEM
+// XP SYSTEM — Anti-spam par élément (1 XP par élément/session)
 // ============================================================
 let xp = 0;
 try { xp = parseInt(localStorage.getItem('xp') || '0'); } catch(e) {}
+
+// Set d'IDs déjà cliqués (réinitialisé à chaque session)
+const _xpClicked = new Set();
+
+/**
+ * addXP(n) — version sans restriction (exercices quiz, dictée, etc.)
+ * Pour les clics libres (vocab, phrases, dialogues…) utiliser addXPOnce(id, n)
+ */
 function addXP(n) {
   xp += n;
   try { localStorage.setItem('xp', xp); } catch(e) {}
-  const level = Math.floor(xp / 100);
-  const pct = (xp % 100);
-  document.getElementById('xpFill').style.width = pct + '%';
-  document.getElementById('xpDisplay').textContent = `Niv.${level + 1} — ${pct} / 100 XP`;
+  _updateXPDisplay();
+  _checkSectionProgress();
 }
-// Init XP display on load
-(function initXPDisplay() {
+
+/**
+ * addXPOnce(id, n) — XP accordé UNE SEULE FOIS par ID dans la session courante.
+ * Retourne true si l'XP a été ajouté, false si déjà accordé.
+ */
+function addXPOnce(id, n) {
+  if (_xpClicked.has(id)) return false;
+  _xpClicked.add(id);
+  addXP(n);
+  return true;
+}
+
+function _updateXPDisplay() {
   const level = Math.floor(xp / 100);
   const pct = xp % 100;
   document.getElementById('xpFill').style.width = pct + '%';
   document.getElementById('xpDisplay').textContent = 'Niv.' + (level+1) + ' — ' + pct + ' / 100 XP';
-})();
+}
+
+// Init XP display on load
+(function initXPDisplay() { _updateXPDisplay(); })();
 
 // Streak
 function initStreak() {
@@ -951,7 +1303,7 @@ const GRAMMAR = {
 // PHRASES
 const PHRASES = {
   'Se présenter 👤': [
-    {en:"My name is Sultan. I'm from Burkina Faso.",fr:"Je m'appelle Sultan. Je suis du Burkina Faso.",ctx:'Présentation'},
+    {en:"My name is __USER__. Nice to meet you!",fr:"Je m'appelle __USER__. Enchanté(e) !",ctx:'Présentation'},
     {en:"I'm a first-year software engineering student.",fr:"Je suis étudiant en première année de génie logiciel.",ctx:'Études'},
     {en:'Nice to meet you! / Pleased to meet you!',fr:'Enchanté(e) !',ctx:'Première rencontre'},
     {en:"What do you do for a living?",fr:"Que faites-vous dans la vie ?",ctx:'Question'},
@@ -1230,7 +1582,7 @@ Today, more than 5 billion people use the internet. It has completely changed <s
 
 In West Africa, startups are using machine learning to <span class="vocab-hl" onclick="speak('predict')">predict</span> crop yields and optimize irrigation systems. In East Africa, AI is being used to diagnose diseases in remote areas where doctors are <span class="vocab-hl" onclick="speak('scarce')">scarce</span>.
 
-However, there are <span class="vocab-hl" onclick="speak('significant')">significant</span> obstacles. Limited internet <span class="vocab-hl" onclick="speak('infrastructure')">infrastructure</span>, lack of local training data, and shortage of skilled engineers remain major challenges. Young African developers like Sultan are crucial to building solutions that truly understand local <span class="vocab-hl" onclick="speak('contexts')">contexts</span> and needs.`,
+However, there are <span class="vocab-hl" onclick="speak('significant')">significant</span> obstacles. Limited internet <span class="vocab-hl" onclick="speak('infrastructure')">infrastructure</span>, lack of local training data, and shortage of skilled engineers remain major challenges. Young African developers like <strong id="readingSultanName">this generation</strong> are crucial to building solutions that truly understand local <span class="vocab-hl" onclick="speak('contexts')">contexts</span> and needs.`,
     questions:[
       {q:"How is AI used in West Africa according to the text?",opts:["To build roads","To predict crop yields","To create movies","To manufacture cars"],ans:"To predict crop yields"},
       {q:"What is mentioned as a challenge for AI in Africa?",opts:["Too many engineers","Limited internet infrastructure","Too much data","High salaries"],ans:"Limited internet infrastructure"},
@@ -1254,7 +1606,7 @@ function initAlphabet() {
       info.className = 'alpha-info show';
       info.innerHTML = `<div class="snd">${a.l} — /${a.s}/</div><div class="exs">📝 ${a.ex}</div><button class="speak-btn" style="margin-top:.5rem" data-text="${a.l}" onclick="speakEl(this)">🔊 Écouter</button>`;
       speak(a.l);
-      addXP(1);
+      if (addXPOnce('alpha_' + a.l, 1)) _recordSectionAction('alphabet');
     };
     grid.appendChild(btn);
   });
@@ -1264,7 +1616,7 @@ function initAlphabet() {
     const card = document.createElement('div');
     card.className = 'pron-card';
     card.innerHTML = `<div class="symbol">${p.sym}</div><div class="name">${p.name}</div><div class="words">${p.words}</div>`;
-    card.onclick = () => { speak(p.words.split(',')[0].trim()); addXP(1); };
+    card.onclick = () => { speak(p.words.split(',')[0].trim()); addXPOnce('phon_' + p.sym, 1); };
     phonGrid.appendChild(card);
   });
 
@@ -1294,7 +1646,8 @@ function initVocab() {
       const card = document.createElement('div');
       card.className = 'vcard';
       card.innerHTML = `<span class="em">${v.em}</span><div class="en">${v.en}</div><div class="ph">${v.ph}</div><div class="fr">🇫🇷 ${v.fr}</div><div class="lvl"><span class="tag tag-${v.lv}">${v.lv.toUpperCase()}</span></div>`;
-      card.onclick = () => { card.classList.toggle('revealed'); speak(v.en.split('/')[0].trim()); addXP(2); };
+      const vocabId = 'vocab_' + v.en;
+      card.onclick = () => { card.classList.toggle('revealed'); speak(v.en.split('/')[0].trim()); if(addXPOnce(vocabId, 2)) _recordSectionAction('vocab'); };
       grid.appendChild(card);
     });
   }
@@ -1336,7 +1689,7 @@ function initGrammar() {
     btn.className = 'pill' + (t === topics[0] ? ' active' : '');
     btn.dataset.t = t;
     btn.textContent = t;
-    btn.onclick = () => renderGrammar(t);
+    btn.onclick = () => { renderGrammar(t); if(addXPOnce('grammar_topic_' + t, 1)) _recordSectionAction('grammar'); };
     pills.appendChild(btn);
   });
   renderGrammar(topics[0]);
@@ -1356,7 +1709,8 @@ function initPhrases() {
       card.className = 'phrase-card';
       const safePEn = p.en.replace(/"/g,'&quot;');
       card.innerHTML = `<div class="en">${p.en} <button class="speak-btn" data-text="${safePEn}" onclick="event.stopPropagation();speakEl(this)">🔊</button></div><div class="fr">🇫🇷 ${p.fr}</div><div class="ctx">${p.ctx}</div>`;
-      card.onclick = () => { speak(p.en); addXP(1); };
+      const phraseId = 'phrase_' + p.en;
+      card.onclick = () => { speak(p.en); if(addXPOnce(phraseId, 1)) _recordSectionAction('phrases'); };
       content.appendChild(card);
     });
   }
@@ -1375,11 +1729,12 @@ function initPhrases() {
 // IDIOMS
 function initIdioms() {
   const content = document.getElementById('idiomsContent');
-  IDIOMS.forEach(id => {
+  IDIOMS.forEach((id, i) => {
     const card = document.createElement('div');
     card.className = 'idiom-card';
     const safePhIdiom = id.ph.replace(/"/g,'&quot;');
     card.innerHTML = `<div class="phrase">"${id.ph}" <button class="speak-btn" data-text="${safePhIdiom}" onclick="speakEl(this)">🔊</button></div><div class="meaning">🇫🇷 ${id.fr}</div><div class="example">💬 ${id.ex}</div><div class="lit">📖 Sens littéral : ${id.lit}</div>`;
+    card.onclick = () => { if(addXPOnce('idiom_' + i, 1)) _recordSectionAction('idioms'); };
     content.appendChild(card);
   });
 }
@@ -1391,17 +1746,19 @@ function initFalseFriends() {
   header.className = 'card';
   header.innerHTML = `<p style="font-size:.85rem;color:var(--muted);line-height:1.6">⚠️ Les <strong style="color:var(--coral)">faux amis</strong> sont des mots anglais qui ressemblent à des mots français mais ont un sens différent. Ils provoquent beaucoup d'erreurs ! Apprends-les bien.</p>`;
   content.appendChild(header);
-  FALSE_FRIENDS.forEach(f => {
+  FALSE_FRIENDS.forEach((f, i) => {
     const card = document.createElement('div');
     card.className = 'ff-card';
+    card.style.cursor = 'pointer';
     card.innerHTML = `
-      <div><div class="label">Mot anglais</div><div class="word" style="cursor:pointer" data-text="${f.word.replace(/"/g,'&quot;')}" onclick="speakEl(this)">${f.word} 🔊</div></div>
+      <div><div class="label">Mot anglais</div><div class="word" style="cursor:pointer" data-text="${f.word.replace(/"/g,'&quot;')}" onclick="event.stopPropagation();speakEl(this)">${f.word} 🔊</div></div>
       <div class="arrow">→</div>
       <div>
         <div class="label">❌ PAS : </div><div class="word wrong">${f.wrong}</div>
         <div class="label" style="margin-top:.4rem">✅ MAIS : </div><div class="word right">${f.right}</div>
         <div style="font-size:.72rem;color:var(--muted);margin-top:.3rem;font-style:italic">"${f.ex}"</div>
       </div>`;
+    card.onclick = () => { if(addXPOnce('ff_' + i, 1)) _recordSectionAction('falsefriends'); };
     content.appendChild(card);
   });
 }
@@ -1438,6 +1795,7 @@ function checkQuiz(btn, chosen, correct, question) {
     btn.classList.add('correct');
     document.getElementById('quizFeedback').innerHTML = `<span style="color:var(--green)">✅ Parfait ! +5 XP</span>`;
     addXP(5);
+    _recordSectionAction('quiz');
   } else {
     qStreakCount = 0;
     btn.classList.add('wrong');
@@ -1486,6 +1844,7 @@ function checkFib(btn, chosen, correct, fullSentence) {
     document.getElementById('blankSpan').style.color = 'var(--green)';
     document.getElementById('fibFeedback').innerHTML = `<span style="color:var(--green)">✅ Excellent ! +3 XP</span>`;
     addXP(3);
+    _recordSectionAction('fillblank');
     speak(fullSentence);
   } else {
     btn.classList.add('wrong');
@@ -1557,6 +1916,7 @@ function checkWordOrder() {
     woScore++;
     feedback.innerHTML = `<span style="color:var(--green)">✅ Parfait ! +4 XP — "${correct}"</span>`;
     addXP(4);
+    _recordSectionAction('wordorder');
     speak(correct);
   } else {
     feedback.innerHTML = `<span style="color:var(--coral)">❌ Correct : "${correct}"</span>`;
@@ -1626,6 +1986,7 @@ function checkDictation() {
     dictaScore++;
     document.getElementById('dictaResult').innerHTML = `<span style="color:var(--green)">✅ Parfait ! +6 XP</span><br>${html}`;
     addXP(6);
+    _recordSectionAction('dictation');
   } else {
     document.getElementById('dictaResult').innerHTML = `<span style="color:var(--coral)">❌ Corrections (mots soulignés) :</span><br>${html}`;
   }
@@ -1664,6 +2025,7 @@ function checkReadingOpt(btn, chosen, correct, id) {
   if (chosen === correct) {
     btn.classList.add('correct');
     addXP(5);
+    _recordSectionAction('reading');
   } else {
     btn.classList.add('wrong');
     container.querySelectorAll('.reading-opt').forEach(b => { if (b.textContent.trim() === correct) b.classList.add('correct'); });
@@ -1683,7 +2045,7 @@ function initDialogues() {
       const el = document.createElement('div');
       el.className = `dlg-msg ${m.side}`;
       el.innerHTML = `<div class="dlg-avatar">${m.who}</div><div class="dlg-bubble">${m.en}<div class="dlg-tr">🇫🇷 ${m.fr}</div></div>`;
-      el.onclick = () => { speak(m.en); addXP(1); };
+      el.onclick = () => { speak(m.en); if(addXPOnce('dlg_' + key + '_' + m.en, 1)) _recordSectionAction('dialogues'); };
       box.appendChild(el);
     });
   }
@@ -1708,7 +2070,7 @@ function initProverbs() {
     card.style.cursor = 'pointer';
     const safeProvEn = p.en.replace(/"/g,'&quot;');
     card.innerHTML = `<div class="prov-en">"${p.en}" <button class="speak-btn" data-text="${safeProvEn}" onclick="event.stopPropagation();speakEl(this)">🔊</button></div><div class="prov-fr">🇫🇷 ${p.fr}</div><div class="prov-meaning">💡 ${p.meaning}</div>`;
-    card.onclick = () => { speak(p.en); addXP(1); };
+    card.onclick = () => { speak(p.en); if(addXPOnce('prov_' + p.en, 1)) _recordSectionAction('proverbs'); };
     content.appendChild(card);
   });
 }
@@ -1726,11 +2088,543 @@ function initTips() {
 
 // NAV
 function showSection(id, btn) {
+  // Resolve the nav button: use passed btn, or find by data-sec, or find by onclick content
+  const navBtn = (btn && btn.classList && btn.classList.contains('nav-btn'))
+    ? btn
+    : (document.querySelector(`.nav-btn[data-sec="${id}"]`)
+       || document.querySelector(`#mainNav .nav-btn[onclick*="'${id}'"]`));
+
+  // Ensure data-sec is set (safety net if _initNavSec missed it)
+  if (navBtn && !navBtn.dataset.sec) navBtn.dataset.sec = id;
+
+  // Check lock
+  if (navBtn && navBtn.classList.contains('locked')) {
+    _showLockedToast(id);
+    return;
+  }
   document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
   document.getElementById(id).classList.add('active');
-  btn.classList.add('active');
+  if (navBtn) navBtn.classList.add('active');
 }
+
+// ============================================================
+// PROGRESSIVE UNLOCK SYSTEM
+// ============================================================
+
+// Order of sections — must complete prev at 70% to unlock next
+const SECTION_ORDER = [
+  'alphabet','vocab','grammar','phrases','idioms',
+  'quiz','fillblank','wordorder','dictation','reading',
+  'dialogues','proverbs','falsefriends','tips'
+];
+
+const SECTION_LABELS = {
+  alphabet:'Alphabet', vocab:'Vocabulaire', grammar:'Grammaire',
+  phrases:'Phrases', idioms:'Idiomes', quiz:'Quiz',
+  fillblank:'Lacunes', wordorder:'Ordre des mots', dictation:'Dictée',
+  reading:'Lecture', dialogues:'Dialogues', proverbs:'Proverbes',
+  falsefriends:'Faux-amis', tips:'Méthodes'
+};
+
+// How many correct actions are needed to consider a section "complete at 70%"
+const SECTION_TARGETS = {
+  alphabet: 10,   // 10 lettres cliquées
+  vocab:    20,   // 20 mots révélés
+  grammar:   5,   // 5 exemples écoutés
+  phrases:  10,   // 10 phrases écoutées
+  idioms:    8,   // 8 idiomes lus
+  quiz:      7,   // 7 bonnes réponses (sur ~10)
+  fillblank: 5,   // 5 bonnes réponses
+  wordorder: 4,   // 4 bonnes réponses
+  dictation: 4,   // 4 bonnes dictées
+  reading:   3,   // 3 bonnes questions lecture
+  dialogues: 6,   // 6 bulles écoutées
+  proverbs:  5,   // 5 proverbes écoutés
+  falsefriends:5, // 5 faux-amis consultés
+  tips:      1    // section finale, toujours "complétable"
+};
+
+// Progress counters per section (in-session + saved)
+let _secProgress = {};
+try {
+  _secProgress = JSON.parse(localStorage.getItem('secProgress') || '{}');
+} catch(e) { _secProgress = {}; }
+
+// ── Migration: first time loading new version ─────────────────
+// If user has never seen the unlock system, give them a clean start
+if (!localStorage.getItem('unlockedSections')) {
+  // Fresh install OR old user: reset secProgress so the 3 default
+  // unlocked sections feel natural, not like they bypassed anything
+  _secProgress = {};
+  try { localStorage.removeItem('secProgress'); } catch(e) {}
+}
+
+// Unlocked sections stored in localStorage
+// Default: first 3 sections always open so the app is usable from the start
+const DEFAULT_UNLOCKED = ['alphabet', 'vocab', 'grammar'];
+let _unlocked = new Set(DEFAULT_UNLOCKED);
+try {
+  const saved = localStorage.getItem('unlockedSections');
+  if (saved) {
+    // Merge saved + defaults (handles old users who have no saved unlocks)
+    const parsed = JSON.parse(saved);
+    _unlocked = new Set([...DEFAULT_UNLOCKED, ...parsed]);
+  }
+  // Always persist the merged set so future loads are consistent
+  localStorage.setItem('unlockedSections', JSON.stringify([..._unlocked]));
+} catch(e) {}
+
+function _saveUnlocked() {
+  try { localStorage.setItem('unlockedSections', JSON.stringify([..._unlocked])); } catch(e) {}
+}
+function _saveProgress() {
+  try { localStorage.setItem('secProgress', JSON.stringify(_secProgress)); } catch(e) {}
+}
+
+/** Increment progress for a section, then check if it unlocks the next */
+function _recordSectionAction(sectionId) {
+  if (!_secProgress[sectionId]) _secProgress[sectionId] = 0;
+  _secProgress[sectionId]++;
+  _saveProgress();
+  _refreshNavLocks();
+  _checkSectionProgress();
+}
+
+/** Called after any XP gain — checks if next section should be unlocked */
+function _checkSectionProgress() {
+  SECTION_ORDER.forEach((sec, i) => {
+    if (i === 0) return; // alphabet always unlocked
+    const prev = SECTION_ORDER[i - 1];
+    const needed = SECTION_TARGETS[prev] || 5;
+    const done = _secProgress[prev] || 0;
+    const pct = Math.min(100, Math.round((done / needed) * 100));
+    if (pct >= 70 && !_unlocked.has(sec)) {
+      _unlocked.add(sec);
+      _saveUnlocked();
+      _refreshNavLocks();
+      _showUnlockModal(sec, SECTION_LABELS[sec]);
+    }
+    _updateSecProgressBar(prev, pct);
+  });
+}
+
+/** Refresh locked/unlocked state of all nav buttons */
+function _refreshNavLocks() {
+  document.querySelectorAll('.nav-btn[data-sec]').forEach(btn => {
+    const sec = btn.dataset.sec;
+    if (_unlocked.has(sec)) {
+      btn.classList.remove('locked');
+      btn.title = '';
+    } else {
+      btn.classList.add('locked');
+      const idx = SECTION_ORDER.indexOf(sec);
+      const prev = idx > 0 ? SECTION_LABELS[SECTION_ORDER[idx-1]] : '';
+      btn.title = `Complete "${prev}" at 70% to unlock`;
+    }
+  });
+}
+
+/** Update the mini progress bar inside a section header */
+function _updateSecProgressBar(secId, pct) {
+  const fill = document.getElementById('spFill_' + secId);
+  const label = document.getElementById('spLabel_' + secId);
+  if (fill) fill.style.width = pct + '%';
+  if (label) label.textContent = pct + '% complété';
+}
+
+/** Show toast when user tries to access a locked section */
+function _showLockedToast(secId) {
+  const idx = SECTION_ORDER.indexOf(secId);
+  const prevId = idx > 0 ? SECTION_ORDER[idx - 1] : '';
+  const prevLabel = idx > 0 ? SECTION_LABELS[SECTION_ORDER[idx - 1]] : '';
+  const needed = idx > 0 ? SECTION_TARGETS[prevId] : 0;
+  const done = _secProgress[prevId] || 0;
+  const pct = needed ? Math.min(100, Math.round((done / needed) * 100)) : 0;
+  const remaining = Math.max(0, Math.ceil(needed * 0.7) - done);
+
+  let t = document.getElementById('_lockToast');
+  if (!t) {
+    t = document.createElement('div');
+    t.id = '_lockToast';
+    t.style.cssText = `position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);
+      background:var(--surface);border:1.5px solid var(--coral);border-radius:12px;
+      padding:.75rem 1.2rem;font-family:'Syne',sans-serif;font-size:.82rem;font-weight:700;
+      color:var(--coral);box-shadow:var(--shadow-md);z-index:2000;
+      transition:opacity .3s;max-width:320px;text-align:center;line-height:1.5;`;
+    document.body.appendChild(t);
+  }
+  t.innerHTML = `🔒 Termine <strong>"${prevLabel}"</strong> à 70% d'abord<br>
+    <span style="font-size:.75rem;color:var(--muted);">Progression : ${pct}% — encore ~${remaining} action${remaining>1?'s':''}</span>`;
+  t.style.opacity = '1';
+  clearTimeout(t._to);
+  t._to = setTimeout(() => { t.style.opacity = '0'; }, 3000);
+}
+
+/** Show unlock celebration modal */
+function _showUnlockModal(secId, label) {
+  const overlay = document.createElement('div');
+  overlay.className = 'unlock-overlay';
+  overlay.innerHTML = `
+    <div class="unlock-box">
+      <span class="unlock-emoji">🎉</span>
+      <h3>Section débloquée !</h3>
+      <p><strong style="color:var(--accent)">${label}</strong> est maintenant accessible.<br>
+      Continue comme ça, tu progresses vraiment !</p>
+      <button class="unlock-ok" onclick="
+        this.closest('.unlock-overlay').remove();
+        showSection('${secId}', document.querySelector('.nav-btn[data-sec=\\'${secId}\\']'));
+      ">🚀 Y aller maintenant</button>
+      <br><br>
+      <button style="background:none;border:none;color:var(--muted);font-size:.8rem;cursor:pointer;font-family:'Syne',sans-serif;"
+        onclick="this.closest('.unlock-overlay').remove()">Plus tard</button>
+    </div>`;
+  document.body.appendChild(overlay);
+}
+
+/** Inject a mini progress bar at the top of each section */
+function _injectProgressBars() {
+  SECTION_ORDER.forEach(sec => {
+    const section = document.getElementById(sec);
+    if (!section) return;
+    const needed = SECTION_TARGETS[sec];
+    const done = _secProgress[sec] || 0;
+    const pct = Math.min(100, Math.round((done / needed) * 100));
+    const bar = document.createElement('div');
+    bar.className = 'sec-progress';
+    bar.innerHTML = `
+      <span id="spLabel_${sec}">${pct}% complété</span>
+      <div class="sec-progress-bar">
+        <div class="sec-progress-fill" id="spFill_${sec}" style="width:${pct}%"></div>
+      </div>
+      <span style="color:var(--muted);">${done}/${needed}</span>`;
+    section.insertBefore(bar, section.firstChild);
+  });
+}
+
+// ── Wire up nav buttons with data-sec attributes ──────────────
+// Only SET data-sec so _refreshNavLocks can query them.
+// The original onclick="showSection('x',this)" stays untouched.
+(function _initNavSec() {
+  document.querySelectorAll('#mainNav .nav-btn').forEach(btn => {
+    const oc = btn.getAttribute('onclick') || '';
+    const m = oc.match(/showSection\('([^']+)'/);
+    if (m) btn.dataset.sec = m[1];
+  });
+  _refreshNavLocks();
+})();
+
+// ============================================================
+// THEME (DARK / LIGHT MODE)
+// ============================================================
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  const btn = document.getElementById('themeToggle');
+  if (btn) btn.innerHTML = theme === 'dark' ? '☀️ Clair' : '🌙 Sombre';
+  try { localStorage.setItem('theme', theme); } catch(e) {}
+}
+function toggleTheme() {
+  const current = document.documentElement.getAttribute('data-theme') || 'light';
+  applyTheme(current === 'dark' ? 'light' : 'dark');
+}
+// Init theme from storage or system preference
+(function initTheme() {
+  let saved = null;
+  try { saved = localStorage.getItem('theme'); } catch(e) {}
+  if (saved) { applyTheme(saved); return; }
+  const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  applyTheme(prefersDark ? 'dark' : 'light');
+})();
+
+// ============================================================
+// USER PROFILE — ONBOARDING & ADAPTATION
+// ============================================================
+let USER_NAME  = '';
+let USER_LEVEL = '';  // A1 A2 B1 B2 C1
+let USER_JOB   = '';  // tech student business health teacher other
+
+const LEVEL_ORDER = ['A1','A2','B1','B2','C1'];
+
+// ── Persistence ──────────────────────────────────────────────
+function saveProfile(name, level, job) {
+  USER_NAME  = name.trim();
+  USER_LEVEL = level;
+  USER_JOB   = job;
+  try {
+    localStorage.setItem('userProfile', JSON.stringify({name:USER_NAME,level:USER_LEVEL,job:USER_JOB}));
+  } catch(e) {}
+}
+function loadProfile() {
+  try {
+    const p = JSON.parse(localStorage.getItem('userProfile') || 'null');
+    if (p && p.name) { USER_NAME = p.name; USER_LEVEL = p.level || 'A1'; USER_JOB = p.job || 'other'; return true; }
+  } catch(e) {}
+  return false;
+}
+
+// ── Name replacement ─────────────────────────────────────────
+function replaceSultan(str) {
+  if (!USER_NAME) return str;
+  // Replace __USER__ placeholders AND literal "Sultan" occurrences
+  return str.replace(/__USER__/g, USER_NAME).replace(/\bSultan\b/gi, USER_NAME);
+}
+function applyNameToData() {
+  if (!USER_NAME) return;
+  Object.keys(DIALOGUES).forEach(key => {
+    DIALOGUES[key].forEach(m => { m.en = replaceSultan(m.en); m.fr = replaceSultan(m.fr); });
+  });
+  DICTATION_DATA.forEach(d => { d.text = replaceSultan(d.text); });
+  PHRASES['Se présenter 👤'].forEach(p => { p.en = replaceSultan(p.en); p.fr = replaceSultan(p.fr); });
+  // Reading
+  const rSpan = document.getElementById('readingSultanName');
+  if (rSpan) rSpan.textContent = USER_NAME;
+}
+
+// ── Level-based content filtering ────────────────────────────
+const LEVEL_VOCAB_TAGS = {
+  A1:['A1'],
+  A2:['A1','A2'],
+  B1:['A1','A2','B1'],
+  B2:['A1','A2','B1','B2'],
+  C1:['A1','A2','B1','B2','C1'],
+};
+
+// Job-specific phrase categories to highlight first
+const JOB_PHRASE_PRIORITY = {
+  tech:     ['Tech &amp; Code 💻','Au travail/études 📚'],
+  student:  ['Au travail/études 📚','Se présenter 👤'],
+  business: ['Au travail/études 📚','Opinions 💭'],
+  health:   ['Chez le médecin 🏥','Urgences &amp; Problèmes 🚨'],
+  teacher:  ['Au travail/études 📚','Opinions 💭'],
+  other:    ['Se présenter 👤'],
+};
+
+// Job-specific dialogue priority
+const JOB_DIALOGUE_PRIORITY = {
+  tech:     ['Entretien tech 💼','En cours de tech 💻'],
+  student:  ['En cours de tech 💻','Se présenter 👋'],
+  business: ['Entretien tech 💼','Se présenter 👋'],
+  health:   ['Chez le médecin 🏥'],
+  teacher:  ['En cours de tech 💻','Se présenter 👋'],
+  other:    ['Se présenter 👋'],
+};
+
+// Job-specific vocab categories to highlight
+const JOB_VOCAB_PRIORITY = {
+  tech:     ['Tech & Informatique 💻','Business & Travail 💼'],
+  student:  ['Émotions & Personnalité 😊','Actions & Verbes ⚡'],
+  business: ['Business & Travail 💼','Nourriture & Restaurant 🍽️'],
+  health:   ['Corps & Santé 🏥','Famille & Relations 👨‍👩‍👧'],
+  teacher:  ['Éducation & École 📚','Émotions & Personnalité 😊'],
+  other:    [],
+};
+
+// ── Adaptation engine ─────────────────────────────────────────
+function applyAdaptation() {
+  if (!USER_LEVEL && !USER_JOB) return;
+
+  // 1. Reorder vocab pills to put job-relevant categories first
+  if (USER_JOB && JOB_VOCAB_PRIORITY[USER_JOB] && JOB_VOCAB_PRIORITY[USER_JOB].length) {
+    const pills = document.querySelectorAll('#vocabPills .pill');
+    const priority = JOB_VOCAB_PRIORITY[USER_JOB];
+    pills.forEach(p => {
+      if (priority.some(pr => p.textContent.includes(pr.split(' ')[0]))) {
+        p.parentNode.insertBefore(p, p.parentNode.firstChild);
+        p.style.background = 'var(--accent)';
+        p.style.color = '#fff';
+        p.style.borderColor = 'var(--accent)';
+      }
+    });
+  }
+
+  // 2. Reorder phrase pills
+  if (USER_JOB && JOB_PHRASE_PRIORITY[USER_JOB]) {
+    const pills = document.querySelectorAll('#phrasesPills .pill');
+    const priority = JOB_PHRASE_PRIORITY[USER_JOB];
+    pills.forEach(p => {
+      if (priority.includes(p.textContent.trim())) {
+        p.parentNode.insertBefore(p, p.parentNode.firstChild);
+      }
+    });
+    // Activate the first priority pill
+    const firstPrio = priority[0];
+    pills.forEach(p => {
+      p.classList.remove('active');
+      if (p.textContent.trim() === firstPrio) { p.classList.add('active'); p.click(); }
+    });
+  }
+
+  // 3. Reorder dialogue pills
+  if (USER_JOB && JOB_DIALOGUE_PRIORITY[USER_JOB]) {
+    const pills = document.querySelectorAll('#dlgPills .pill');
+    const priority = JOB_DIALOGUE_PRIORITY[USER_JOB];
+    let firstFound = null;
+    pills.forEach(p => {
+      if (priority.includes(p.textContent.trim())) {
+        p.parentNode.insertBefore(p, p.parentNode.firstChild);
+        if (!firstFound) firstFound = p;
+      }
+    });
+    if (firstFound) {
+      document.querySelectorAll('#dlgPills .pill').forEach(b => b.classList.remove('active'));
+      firstFound.classList.add('active');
+      firstFound.click();
+    }
+  }
+
+  // 4. Add adapt banner to relevant sections
+  const sectionBanners = {
+    vocab:     getBannerText('vocab'),
+    phrases:   getBannerText('phrases'),
+    dialogues: getBannerText('dialogues'),
+    quiz:      getBannerText('quiz'),
+  };
+  Object.entries(sectionBanners).forEach(([id, text]) => {
+    if (!text) return;
+    const sec = document.getElementById(id);
+    if (!sec) return;
+    const existing = sec.querySelector('.adapt-banner');
+    if (existing) existing.remove();
+    const banner = document.createElement('div');
+    banner.className = 'adapt-banner';
+    banner.innerHTML = `<span style="font-size:1.2rem;">🎯</span> <span>${text}</span>`;
+    sec.insertBefore(banner, sec.querySelector('.pills') || sec.querySelector('.score-bar') || sec.firstChild.nextSibling);
+  });
+}
+
+function getBannerText(section) {
+  const jobLabels = { tech:'développeur tech', student:'étudiant(e)', business:'professionnel(le) du business', health:'professionnel(le) de santé', teacher:'enseignant(e)', other:'apprenant' };
+  const lvlLabel = USER_LEVEL || 'A1';
+  const jobLabel = jobLabels[USER_JOB] || 'apprenant';
+  if (section === 'vocab') return `Vocabulaire adapté au niveau <strong>${lvlLabel}</strong> — catégories <strong>${USER_JOB === 'tech' ? 'Tech & Business' : USER_JOB === 'health' ? 'Santé & Corps' : 'essentielles'}</strong> mises en avant pour toi.`;
+  if (section === 'phrases') return `Phrases prioritaires pour un(e) <strong>${jobLabel}</strong> de niveau <strong>${lvlLabel}</strong>.`;
+  if (section === 'dialogues') return `Dialogues recommandés pour ton profil : <strong>${jobLabel}</strong> — niveau <strong>${lvlLabel}</strong>.`;
+  if (section === 'quiz') return `Quiz adaptatif — questions de niveau <strong>${lvlLabel}</strong> et supérieur en priorité.`;
+  return '';
+}
+
+// ── Header profile badge ──────────────────────────────────────
+function updateHeaderGreeting() {
+  const el = document.getElementById('headerSubtitle');
+  if (el && USER_NAME) {
+    const lvl = USER_LEVEL ? ` · Niveau ${USER_LEVEL}` : '';
+    el.textContent = `Bonjour ${USER_NAME} 👋 — De A1 à C1 · Vocabulaire · Grammaire · Prononciation${lvl}`;
+  }
+  const wrap = document.getElementById('profileBadgeWrap');
+  if (wrap && USER_NAME) {
+    const jobEmojis = { tech:'💻', student:'🎓', business:'📈', health:'🏥', teacher:'📚', other:'🌍' };
+    const emoji = jobEmojis[USER_JOB] || '🌍';
+    wrap.innerHTML = `<button class="profile-banner" onclick="resetProfile()" title="Modifier mon profil">
+      ${emoji} ${USER_NAME} · ${USER_LEVEL || '?'} · Modifier
+    </button>`;
+  }
+}
+
+function resetProfile() {
+  if (!confirm('Modifier ton profil ? Le contenu sera réadapté.')) return;
+  try { localStorage.removeItem('userProfile'); } catch(e) {}
+  USER_NAME = ''; USER_LEVEL = ''; USER_JOB = '';
+  location.reload();
+}
+
+// ── Onboarding step logic ─────────────────────────────────────
+let _selectedLevel = '';
+let _selectedJob   = '';
+
+function selectLevel(btn) {
+  document.querySelectorAll('.level-choice').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  _selectedLevel = btn.dataset.level;
+}
+function selectJob(btn) {
+  document.querySelectorAll('.job-choice').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  _selectedJob = btn.dataset.job;
+}
+
+function onboardNext(step) {
+  if (step === 1) {
+    const name = document.getElementById('onboardName').value.trim();
+    if (!name) {
+      const inp = document.getElementById('onboardName');
+      inp.style.borderColor = 'var(--coral)';
+      inp.placeholder = 'Entre ton prénom pour continuer !';
+      inp.focus();
+      return;
+    }
+    _onboardTmpName = name;
+    setDot(2);
+    document.getElementById('step1').style.display = 'none';
+    document.getElementById('step2').style.display = 'block';
+  }
+  if (step === 2) {
+    if (!_selectedLevel) {
+      const first = document.querySelector('.level-choice');
+      if (first) { first.classList.add('selected'); _selectedLevel = first.dataset.level; }
+    }
+    setDot(3);
+    document.getElementById('step2').style.display = 'none';
+    document.getElementById('step3').style.display = 'block';
+  }
+}
+let _onboardTmpName = '';
+
+function setDot(active) {
+  [1,2,3].forEach(i => {
+    const d = document.getElementById('dot'+i);
+    if (!d) return;
+    d.classList.remove('active','done');
+    if (i < active) d.classList.add('done');
+    else if (i === active) d.classList.add('active');
+  });
+  [1,2].forEach(i => {
+    const l = document.getElementById('line'+i);
+    if (!l) return;
+    l.classList.toggle('done', i < active);
+  });
+}
+
+function onboardFinish() {
+  if (!_selectedJob) {
+    const first = document.querySelector('.job-choice');
+    if (first) { first.classList.add('selected'); _selectedJob = first.dataset.job; }
+  }
+  saveProfile(_onboardTmpName, _selectedLevel || 'A1', _selectedJob || 'other');
+  applyNameToData();
+  updateHeaderGreeting();
+  // Re-init name-sensitive sections
+  document.getElementById('dlgBox').innerHTML = '';
+  document.getElementById('dlgPills').innerHTML = '';
+  initDialogues();
+  document.getElementById('phrasesContent').innerHTML = '';
+  document.getElementById('phrasesPills').innerHTML = '';
+  initPhrases();
+  // Apply adaptation after a tick (so DOM is ready)
+  setTimeout(applyAdaptation, 50);
+  // Close modal
+  const overlay = document.getElementById('onboardOverlay');
+  overlay.style.animation = 'fadeIn .25s ease reverse forwards';
+  setTimeout(() => overlay.style.display = 'none', 250);
+}
+
+// ── Onboarding boot check ─────────────────────────────────────
+(function checkOnboarding() {
+  if (loadProfile()) {
+    // Returning user — apply data transformations after DATA arrays are defined
+    // (BOOT section below will call applyNameToData + applyAdaptation)
+  } else {
+    setTimeout(() => {
+      const overlay = document.getElementById('onboardOverlay');
+      overlay.style.display = 'flex';
+      setTimeout(() => { const inp = document.getElementById('onboardName'); if(inp) inp.focus(); }, 150);
+    }, 400);
+  }
+})();
+
+document.addEventListener('DOMContentLoaded', () => {
+  const inp = document.getElementById('onboardName');
+  if (inp) inp.addEventListener('keydown', e => { if (e.key === 'Enter') onboardNext(1); });
+});
 
 // ============================================================
 // BOOT
@@ -1744,11 +2638,21 @@ initFalseFriends();
 loadQuizQ();
 loadFib();
 loadWordOrder();
+// Apply user profile to data before rendering name-sensitive sections
+if (USER_NAME) { applyNameToData(); updateHeaderGreeting(); }
 loadDictation();
 initReading();
 initDialogues();
 initProverbs();
 initTips();
+// Apply content adaptation for returning users
+if (USER_NAME && USER_LEVEL) { setTimeout(applyAdaptation, 100); }
+
+// ── Init progression UI AFTER all content is rendered ────────
+// (runs synchronously after BOOT, DOM is fully ready at this point)
+_injectProgressBars();
+_refreshNavLocks();
+_checkSectionProgress();
 
 // ═══════════════════════════════════════════════
 // PWA — Service Worker Registration
@@ -1797,20 +2701,20 @@ function showInstallBanner() {
     <div style="display:flex;align-items:center;gap:.8rem;">
       <span style="font-size:1.4rem;">📲</span>
       <div>
-        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:.85rem;color:#1a1d2e;">Installer English Master</div>
-        <div style="font-size:.75rem;color:#6b7280;margin-top:.1rem;">Accès rapide depuis ton écran d'accueil</div>
+        <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:.85rem;color:var(--text);">Installer English Master</div>
+        <div style="font-size:.75rem;color:var(--muted);margin-top:.1rem;">Accès rapide depuis ton écran d'accueil</div>
       </div>
     </div>
     <div style="display:flex;gap:.5rem;margin-top:.8rem;">
       <button id="installBtn" style="flex:1;background:#4f6ef7;color:#fff;border:none;border-radius:99px;padding:.5rem 1rem;font-family:'Syne',sans-serif;font-size:.78rem;font-weight:700;cursor:pointer;">📲 Installer</button>
-      <button id="dismissBtn" style="background:#f0f2f7;color:#6b7280;border:1px solid #e2e6ef;border-radius:99px;padding:.5rem .9rem;font-family:'Syne',sans-serif;font-size:.78rem;font-weight:700;cursor:pointer;">Plus tard</button>
+      <button id="dismissBtn" style="background:var(--surface2);color:var(--muted);border:1px solid var(--border);border-radius:99px;padding:.5rem .9rem;font-family:'Syne',sans-serif;font-size:.78rem;font-weight:700;cursor:pointer;">Plus tard</button>
     </div>
   `;
   banner.style.cssText = `
     position:fixed;bottom:1rem;left:50%;transform:translateX(-50%);
     width:calc(100% - 2rem);max-width:400px;
-    background:#fff;border:1px solid #e2e6ef;border-radius:16px;
-    padding:1rem;box-shadow:0 8px 30px rgba(0,0,0,.12);
+    background:var(--surface);border:1px solid var(--border);border-radius:16px;
+    padding:1rem;box-shadow:0 8px 30px rgba(0,0,0,.18);
     z-index:1000;animation:slideUp .3s ease;
   `;
 
@@ -1856,15 +2760,15 @@ function showUpdateBanner() {
   banner.id = 'updateBanner';
   banner.innerHTML = `
     <div style="display:flex;align-items:center;justify-content:space-between;gap:.8rem;">
-      <span style="font-size:.85rem;font-family:'Syne',sans-serif;font-weight:700;color:#1a1d2e;">🔄 Mise à jour disponible</span>
+      <span style="font-size:.85rem;font-family:'Syne',sans-serif;font-weight:700;color:var(--text);">🔄 Mise à jour disponible</span>
       <button onclick="window.location.reload()" style="background:#4f6ef7;color:#fff;border:none;border-radius:99px;padding:.35rem .9rem;font-family:'Syne',sans-serif;font-size:.75rem;font-weight:700;cursor:pointer;white-space:nowrap;">Actualiser</button>
     </div>
   `;
   banner.style.cssText = `
     position:fixed;top:.5rem;left:50%;transform:translateX(-50%);
     width:calc(100% - 2rem);max-width:400px;
-    background:#fff;border:1px solid #e2e6ef;border-radius:12px;
-    padding:.75rem 1rem;box-shadow:0 4px 20px rgba(0,0,0,.1);
+    background:var(--surface);border:1px solid var(--border);border-radius:12px;
+    padding:.75rem 1rem;box-shadow:0 4px 20px rgba(0,0,0,.15);
     z-index:1000;
   `;
   document.body.appendChild(banner);
@@ -1916,20 +2820,20 @@ if (isIOS() && !isInStandaloneMode()) {
     banner.innerHTML = `
       <div style="display:flex;justify-content:space-between;align-items:flex-start;">
         <div>
-          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:.85rem;color:#1a1d2e;">📲 Installer sur iOS</div>
-          <div style="font-size:.78rem;color:#374151;margin-top:.4rem;line-height:1.5;">
+          <div style="font-family:'Syne',sans-serif;font-weight:700;font-size:.85rem;color:var(--text);">📲 Installer sur iOS</div>
+          <div style="font-size:.78rem;color:var(--text2);margin-top:.4rem;line-height:1.5;">
             1. Appuie sur <strong>Partager</strong> <span style="font-size:1rem;">⎙</span><br>
             2. Puis <strong>"Sur l'écran d'accueil"</strong> <span style="font-size:.9rem;">➕</span>
           </div>
         </div>
-        <button onclick="this.closest('#iosBanner').remove()" style="background:none;border:none;font-size:1.2rem;cursor:pointer;color:#9ca3af;padding:.2rem;">✕</button>
+        <button onclick="this.closest('#iosBanner').remove()" style="background:none;border:none;font-size:1.2rem;cursor:pointer;color:var(--muted);padding:.2rem;">✕</button>
       </div>
     `;
     banner.style.cssText = `
       position:fixed;bottom:1rem;left:50%;transform:translateX(-50%);
       width:calc(100% - 2rem);max-width:380px;
-      background:#fff;border:1px solid #e2e6ef;border-radius:16px;
-      padding:1rem;box-shadow:0 8px 30px rgba(0,0,0,.12);z-index:1000;
+      background:var(--surface);border:1px solid var(--border);border-radius:16px;
+      padding:1rem;box-shadow:0 8px 30px rgba(0,0,0,.18);z-index:1000;
     `;
     document.body.appendChild(banner);
   }, 4000);
