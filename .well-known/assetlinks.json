@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "io.github.sultan226_tech.twa",
+        "sha256_cert_fingerprints": ["A3:22:95:9B:EB:18:C2:09:BB:6E:8B:0F:20:F6:29:27:71:16:FB:98:29:35:3A:A7:5C:6C:51:40:58:7C:08:69"]
+      }
+    }]
